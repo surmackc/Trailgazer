@@ -1,0 +1,101 @@
+body{
+	background: #D8D9D9FF;
+	font-family: "museo-slab",'Montserrat', sans-serif;
+	font-weight: 100;
+}
+
+h1 {
+	font-family: "museo-slab",'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 20px;
+}
+
+h3 {
+	font-family: "museo-slab",'Montserrat', sans-serif;
+	font-weight: 100;
+	font-size: 20px;
+
+}
+.container {
+
+}
+.page-title {
+	background: #fff;
+	float: left;
+
+	text-align: center;
+	padding:15px 0 0 0;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+.nav-search {
+	background: #eee;
+	float: right;
+
+	text-align: center;
+	padding:15px 0 0 0;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+#trail-card {
+	margin-top: 20px;
+}
+
+.search-results {
+	background: #fff;
+
+	text-align: center;
+	padding:15px 0 0 0;
+	border: .5px solid #A4CEE4FF;
+}
+
+.location-results {
+	background: #fff;
+
+	text-align: center;
+	padding:15px 0 0 0;
+	border: .5px solid #A4CEE4FF;
+}
+
+.trail-name {
+	margin-left:15px;
+	text-align: center;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+.trail-summary {
+	margin-left:15px;
+	text-align: center;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+.trail-length {
+	margin-left:15px;
+	text-align: center;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+.trail-difficulty {
+	margin-left:15px;
+	text-align: center;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+.trail-image {
+	background: #fff;
+
+	text-align: center;
+	padding:15px 0 0 0;
+	border: .5px solid #A4CEE4FF;
+
+}
+
+#legend {
+	margin: 20px;
+}
