@@ -99,21 +99,19 @@ function renderCards(trails) {
 
 
 		var card = $("<div>");
-		card.addClass("card");
-
-		var container = $("<div>");
-		container.addClass("imgContainer");
-		container.append(card);
+		card.addClass("imgDiv");
 
 		var image = $("<img>");
 		image.attr("src", imgURL);
 		image.attr("alt", name);
-		container.append(image);
+		card.append(image);
 
-		$("#results").append(card);
+		$("#resultList").append(card);
 
 
 
 	}
 }
+
+//get placeID for each result and geocode
 

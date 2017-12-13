@@ -14,11 +14,8 @@ h3 {
 	font-family: "museo-slab",'Montserrat', sans-serif;
 	font-weight: 100;
 	font-size: 20px;
-
 }
-.container {
 
-}
 .page-title {
 	background: #fff;
 	float: left;
@@ -56,30 +53,20 @@ h3 {
 	text-align: center;
 	border: .5px solid #A4CEE4FF;
 	margin-top: 10px;
-
 }
 
-.card {
-    float: left;
-    width: 33.333%;
-    padding: .75rem;
-    margin-bottom: 2rem;
-    border: 0;
-}
-
-.search-results img {
+#resultList {
 	width: 100%;
-	height: 250px;
 }
 
-.imgContainer {
-	position: relative;
-    float: left;
-    width:  100px;
-    height: 100px;
-    background-position: 50% 50%;
-    background-repeat:   no-repeat;
-    background-size:     cover;
+.imgDiv {
+    width:33.3%;
+}
+
+.imgDiv img {
+	width: 100%;
+    height: 250px;
+	object-fit: cover;
 }
 
 .location-results {
