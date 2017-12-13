@@ -86,30 +86,30 @@ function getTrails(lat, lng) {
 
 function renderCards(trails) {
 	console.log(trails);
+
 	for (i = 0; i < trails.length; i++) {
-		var trail = trails[i];
-		var imgURL = trail.imgMedium;
-		var difficulty = trail.difficulty;
-		var id = trail.id;
-		var length = trail.length;
-		var name = trail.name;
-		var summary = trail.summary;
-		var url = trail.url;
-		var location = trail.location;
-
-
 		var card = $("<div>");
-		card.addClass("imgDiv");
+		card.addClass("imgDiv col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3");
 
 		var image = $("<img>");
-		image.attr("src", imgURL);
-		image.attr("alt", name);
+		image.attr("src", trails[i].imgMedium);
+		image.attr("alt", trails[i].name);
+		image.data("id", trails[i].id);
 		card.append(image);
 
+		var nameDiv = $('<div class="name">');
+		var lengthDiv = $('<div class="length">');
+		var difficultyDiv = $('<div class="difficulty">');
+
+		nameDiv.text(trails[i].name);
+		lengthDiv.text(trails[i].length);
+		difficultyDiv.text(trails[i].difficulty);
+
+		card.append(nameDiv);
+		card.append(lengthDiv);
+		card.append(difficultyDiv);
+
 		$("#resultList").append(card);
-
-
-
 	}
 }
 
