@@ -43,12 +43,19 @@ h3 {
 	margin-top: 20px;
 }
 
+.trail-info {
+	background: #fff;
+	padding:15px 0 0 0;
+	text-align: center;
+	border: .5px solid #A4CEE4FF;
+}
+
 .search-results {
 	background: #fff;
-
 	text-align: center;
-	padding:15px 0 0 0;
 	border: .5px solid #A4CEE4FF;
+	margin-top: 10px;
+
 }
 
 .location-results {
