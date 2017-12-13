@@ -51,11 +51,35 @@ h3 {
 }
 
 .search-results {
+	width: 100%;
 	background: #fff;
 	text-align: center;
 	border: .5px solid #A4CEE4FF;
 	margin-top: 10px;
 
+}
+
+.card {
+    float: left;
+    width: 33.333%;
+    padding: .75rem;
+    margin-bottom: 2rem;
+    border: 0;
+}
+
+.search-results img {
+	width: 100%;
+	height: 250px;
+}
+
+.imgContainer {
+	position: relative;
+    float: left;
+    width:  100px;
+    height: 100px;
+    background-position: 50% 50%;
+    background-repeat:   no-repeat;
+    background-size:     cover;
 }
 
 .location-results {
