@@ -56,10 +56,10 @@ h3 {
 }
 
 #resultList {
-	width: 100%;
 }
 
 .imgDiv {
+	padding: 5px;
     width:33.3%;
 }
 
