@@ -88,6 +88,8 @@ function renderCards(trails) {
 	console.log(trails);
 
 	for (i = 0; i < trails.length; i++) {
+		$("#resultList").empty();
+
 		var card = $("<div>");
 		card.addClass("imgDiv col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3");
 
