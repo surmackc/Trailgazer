@@ -1,23 +1,33 @@
 //Show user welcome
 
 //Get user name and location
-$("#address-submit").on("click", function(event) {
-  // prevent page from refreshing when form tries to submit itself
-	event.preventDefault();
+$(document).ready(function() {
+	$("#address-submit").on("click", function getAddress(event) {
+		// prevent page from refreshing when form tries to submit itself
+		event.preventDefault();
 
-	// Capture user inputs and store them into variables
-	var address = $("#address-input").val().trim();
+		// Capture user inputs and store them into variables
+		var address = $("#address-input").val().trim();
 
-	// Console log each of the user inputs to confirm we are receiving them
-	console.log(address);
+		// Console log each of the user inputs to confirm we are receiving them
+		console.log(address);
 
-	// Clear localStorage
-	localStorage.clear();
+		// Clear localStorage
+		localStorage.clear();
 
-	// Store all content into localStorage
-	localStorage.setItem("address", address);
+		// Store all content into localStorage
+		localStorage.setItem("address", address);
 
-	geocode(address);
+		geocode(address);
+	});
+
+	$(".search-results").on("click", ".imgDiv", function showDetails() {
+		console.log($(this));
+		var index = $(this).data("index");
+		$("#trail-card").insertAfter($(this));
+		$("#trail-card").removeClass("hide");
+	});
+
 });
 
 
@@ -85,18 +95,17 @@ function getTrails(lat, lng) {
 }
 
 function renderCards(trails) {
-	console.log(trails);
+	$("#resultList").empty();
 
 	for (i = 0; i < trails.length; i++) {
-		$("#resultList").empty();
 
 		var card = $("<div>");
+		card.data("index", i);
 		card.addClass("imgDiv col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3");
 
 		var image = $("<img>");
 		image.attr("src", trails[i].imgMedium);
 		image.attr("alt", trails[i].name);
-		image.data("id", trails[i].id);
 		card.append(image);
 
 		var nameDiv = $('<div class="name">');
@@ -114,6 +123,8 @@ function renderCards(trails) {
 		$("#resultList").append(card);
 	}
 }
+
+
 
 //get placeID for each result and geocode
 
