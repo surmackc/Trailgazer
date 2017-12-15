@@ -1,5 +1,6 @@
 //Show user welcome
 
+var trails;
 
 //Get user name and location
 $(document).ready(function() {
@@ -25,19 +26,23 @@ $(document).ready(function() {
 	$(".search-results").on("click", ".imgDiv", function showDetails() {
 		console.log($(this));
 		var index = $(this).data("index");
-		$("#trail-card").insertAfter($(this));
-		$("#trail-card").removeClass("hide");
+		// $("#trail-card").insertAfter($(this));   //decided not to do this for now
+		// $("#trail-card").removeClass("hide");    //decided not to do this for now
+
+		$.each(trails[index], function populate(key, value) {
+			if ( $(`#trail-${key}`) ) {
+				$(`#trail-${key}`).text(value);
+			}
+
+			if ( ($(`#trail-${key}`)) && (key.startsWith("img")) ) {
+				$(`#trail-${key}`).attr("src", value);
+			}
+		});
 	});
 
 	$("body").on("click", ".directionButtonClass", function(event) {
 		window.location = "https://www.google.com/maps/"
 	});
-
-
-
-
-
-
 });
 
 
@@ -90,7 +95,7 @@ function getTrails(lat, lng) {
 
 			console.log(response);
 
-			var trails = response.trails;
+			trails = response.trails;
 
 			localStorage.setItem("trails", trails);
 
@@ -118,22 +123,21 @@ function renderCards(trails) {
 		image.attr("alt", trails[i].name);
 		card.append(image);
 
+		var directionButton= $("<button>")
 		var nameDiv = $('<div class="name">');
 		var lengthDiv = $('<div class="length">');
 		var difficultyDiv = $('<div class="difficulty">');
-		var directionButton= $("<button>")
 
 		nameDiv.text(trails[i].name);
 		lengthDiv.text(trails[i].length);
 		difficultyDiv.text(trails[i].difficulty);
 		directionButton.text("Get Directions")
-
 		directionButton.addClass("directionButtonClass")
 
 		card.append(nameDiv);
 		card.append(lengthDiv);
 		card.append(difficultyDiv);
-		card.append(directionButton)
+		card.append(directionButton);
 
 		$("#resultList").append(card);
 	}

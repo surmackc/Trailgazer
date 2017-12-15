@@ -15,7 +15,7 @@ h3 {
 	font-weight: 500;
 	font-size: 20px;
 }
-h4 {	
+h4 {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 	font-style: italic;
@@ -93,6 +93,7 @@ p {
 }
 
 .imgDiv {
+	position: relative;
 	padding: 5px;
 }
 
@@ -100,6 +101,11 @@ p {
 	width: 100%;
     height: 250px;
 	object-fit: cover;
+}
+
+
+.hide {
+	display: none;
 }
 
 .location-results {
@@ -139,7 +145,10 @@ p {
 .trail-image {
 	text-align: center;
 	padding:15px 0 0 0;
+}
 
+.trail-image img {
+	object-fit: cover;
 }
 
 #legend {
