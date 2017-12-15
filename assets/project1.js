@@ -1,5 +1,6 @@
 //Show user welcome
 
+
 //Get user name and location
 $(document).ready(function() {
 	$("#address-submit").on("click", function getAddress(event) {
@@ -27,6 +28,15 @@ $(document).ready(function() {
 		$("#trail-card").insertAfter($(this));
 		$("#trail-card").removeClass("hide");
 	});
+
+	$("body").on("click", ".directionButtonClass", function(event) {
+		window.location = "https://www.google.com/maps/"
+	});
+
+
+
+
+
 
 });
 
@@ -111,14 +121,19 @@ function renderCards(trails) {
 		var nameDiv = $('<div class="name">');
 		var lengthDiv = $('<div class="length">');
 		var difficultyDiv = $('<div class="difficulty">');
+		var directionButton= $("<button>")
 
 		nameDiv.text(trails[i].name);
 		lengthDiv.text(trails[i].length);
 		difficultyDiv.text(trails[i].difficulty);
+		directionButton.text("Get Directions")
+
+		directionButton.addClass("directionButtonClass")
 
 		card.append(nameDiv);
 		card.append(lengthDiv);
 		card.append(difficultyDiv);
+		card.append(directionButton)
 
 		$("#resultList").append(card);
 	}
