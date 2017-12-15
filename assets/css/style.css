@@ -1,57 +1,91 @@
 body{
-	background: #D8D9D9FF;
-	font-family: "museo-slab",'Montserrat', sans-serif;
+	background: #F0F9EF;
+	font-family: 'Montserrat', sans-serif;
 	font-weight: 100;
 }
 
 h1 {
-	font-family: "museo-slab",'Montserrat', sans-serif;
-	font-weight: 100;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
 	font-size: 20px;
 }
 
 h3 {
-	font-family: "museo-slab",'Montserrat', sans-serif;
-	font-weight: 100;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
 	font-size: 20px;
 }
+h4 {	
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	font-size: 14px;
+}
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
 
+}
 .page-title {
-	background: #fff;
-	float: left;
-
 	text-align: center;
-	padding:15px 0 0 0;
-	border: .5px solid #A4CEE4FF;
+	background-image: url(../images/page-title-bg.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
 
+#page-title-1 {
+	font-size: 50px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	color: #009C66;
+	margin-left: 20px;
+	margin-bottom: -15px;
+}
+#page-title-2 {
+	font-size: 50px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	color: #009C66;
+	line-height: 0px;
+	margin-left: 50px;
+	margin-bottom: 0px;
 }
 
 .nav-search {
-	background: #eee;
 	float: right;
+}
 
-	text-align: center;
-	padding:15px 0 0 0;
-	border: .5px solid #A4CEE4FF;
+.form-group {
+	margin-top: 30px;
+}
 
+.btn {
+	float: right;
+	margin-top: 5px;
+	background:#009C66;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	padding: 2px;
 }
 
 #trail-card {
-	margin-top: 20px;
+	margin-top: 10px;
+	border-top: .5px solid #9BD3BD;
 }
 
 .trail-info {
-	background: #fff;
-	padding:15px 0 0 0;
+	background: #E7EFE6;
+	padding:15px 30px 0 0;
+	margin-top: 10px;
 	text-align: center;
-	border: .5px solid #A4CEE4FF;
+	border-radius: 10px;
 }
 
 .search-results {
 	width: 100%;
-	background: #fff;
 	text-align: center;
-	border: .5px solid #A4CEE4FF;
 	margin-top: 10px;
 }
 
@@ -69,47 +103,42 @@ h3 {
 }
 
 .location-results {
-	background: #fff;
 
 	text-align: center;
 	padding:15px 0 0 0;
-	border: .5px solid #A4CEE4FF;
 }
 
 .trail-name {
 	margin-left:15px;
 	text-align: center;
-	border: .5px solid #A4CEE4FF;
+	border-bottom: .5px solid #fff;
+	color: #009C66;
 
 }
 
 .trail-summary {
 	margin-left:15px;
-	text-align: center;
-	border: .5px solid #A4CEE4FF;
+
+	margin-top: 10px;
+	text-align: left;
+	display: block;
 
 }
 
 .trail-length {
 	margin-left:15px;
 	text-align: center;
-	border: .5px solid #A4CEE4FF;
-
 }
 
 .trail-difficulty {
 	margin-left:15px;
 	text-align: center;
-	border: .5px solid #A4CEE4FF;
 
 }
 
 .trail-image {
-	background: #fff;
-
 	text-align: center;
 	padding:15px 0 0 0;
-	border: .5px solid #A4CEE4FF;
 
 }
 
