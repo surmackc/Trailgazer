@@ -32,6 +32,7 @@ p {
 	background-image: url(../images/page-title-bg.png);
 	background-repeat: no-repeat;
 	background-position: center bottom;
+	height:100px;
 }
 
 #page-title-1 {
