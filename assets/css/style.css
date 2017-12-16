@@ -135,8 +135,12 @@ p {
 	padding:15px 0 0 0;
 }
 
+#trail-image {
+
+}
 .trail-image img {
 	object-fit: cover;
+	height: 350px;
 }
 
 /* Address Search Input & Autocomplete */
@@ -247,9 +251,4 @@ p {
 .directionButtonClass {
 	background-color: #009C66;
 	color: #fff;
-}
-
-#trail-imgMedium {
-	height: 250px;
-	width: 335px;
 }
