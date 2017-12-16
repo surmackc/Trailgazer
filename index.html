@@ -29,11 +29,9 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 offset-md-1 offset-lg-1 nav-search" >
 
-                <form>
-                    
-                    <div class="form-group">
-                        <input class="form-control" id="address-input" type="text" placeholder="Address Search">
-                        <button class="btn" id="address-submit" type="text"> Submit </button>
+                <form>                    
+                    <div id="locationField">
+                        <input id="address-input" type="text" placeholder="Address Search" onFocus="geolocate()">
                         <select id="source" name="source">
                             <option>10 Miles</option>
                             <option>20 Miles</option>
@@ -46,6 +44,7 @@
                             <option>90 Miles</option>
                             <option>100 Miles</option>
                         </select>
+                        <button class="btn" id="address-submit" type="text"> Submit </button>
                     </div>
                 </form>
 
@@ -94,6 +93,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Google Places Autocomplete and Places Library -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRt0EcXbppvF46BuzFPFx447lYL6psmuU&libraries=places&callback=initAutocomplete"
+        async defer></script>
 
 
     <!-- Firebase -->

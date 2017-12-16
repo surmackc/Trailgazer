@@ -32,6 +32,7 @@ p {
 	background-image: url(../images/page-title-bg.png);
 	background-repeat: no-repeat;
 	background-position: center bottom;
+	height:100px;
 }
 
 #page-title-1 {
@@ -56,19 +57,6 @@ p {
 	float: right;
 }
 
-.form-group {
-	margin-top: 30px;
-}
-
-.btn {
-	float: right;
-	margin-top: 5px;
-	background:#009C66;
-	color: #fff;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 300;
-	padding: 2px;
-}
 
 #trail-card {
 	margin-top: 10px;
@@ -151,9 +139,61 @@ p {
 	object-fit: cover;
 }
 
-#legend {
-	margin: 20px;
+/* Address Search Input & Autocomplete */
+
+#locationField, #controls {
+   	margin-top: 20px;
+    position: relative;
+    width: 480px;
+    height: 100px;
 }
+#address-input {
+    top: 0px;
+    left: 0px;
+    width: 250px;
+}
+.label {
+    text-align: right;
+    font-weight: bold;
+    width: 100px;
+    color: #303030;
+}
+#address {
+    border: 1px solid #000090;
+    background-color: #f0f0ff;
+    width: 480px;
+    padding-right: 2px;
+}
+#address td {
+    font-size: 10pt;
+}
+.field {
+    width: 99%;
+}
+.slimField {
+    width: 80px;
+}
+.wideField {
+    width: 200px;
+}
+#locationField {
+    height: 25px;
+    margin-bottom: 2px;
+}
+.form-group {
+	margin-top: 30px;
+}
+
+.btn {
+
+
+	background:#009C66;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	padding: 2px;
+}
+
 
 /* Dropdown Button */
 .dropbtn {
