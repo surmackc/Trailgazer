@@ -1,6 +1,8 @@
 //Show user welcome
 
 
+
+
 //Get user name and location
 $(document).ready(function() {
 	$("#address-submit").on("click", function getAddress(event) {
@@ -79,7 +81,54 @@ function getTrails(lat, lng) {
 
 	var queryURL = "https://www.hikingproject.com/data/get-trails?key=";
 
-	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + "maxDistance=10";
+	var milesRadius = "maxDistance=10"
+
+	var sourceSelect = $("#source")
+
+	if(sourceSelect.val() === "10 Miles" ) {
+    		milesRadius = "maxDistance=10";
+    }
+
+    if(sourceSelect.val() === "20 Miles" ) {
+    		milesRadius = "maxDistance=20";
+    }
+
+    if(sourceSelect.val() === "30 Miles" ) {
+    		milesRadius = "maxDistance=30";
+    }
+
+	if(sourceSelect.val() === "40 Miles" ) {
+    		milesRadius = "maxDistance=40";
+    }
+
+	if(sourceSelect.val() === "50 Miles" ) {
+    		milesRadius = "maxDistance=50";
+    }
+
+	if(sourceSelect.val() === "60 Miles" ) {
+    		milesRadius = "maxDistance=60";
+    }
+
+	if(sourceSelect.val() === "70 Miles" ) {
+    		milesRadius = "maxDistance=70";
+    }
+
+	if(sourceSelect.val() === "80 Miles" ) {
+    		milesRadius = "maxDistance=80";
+    }
+
+	if(sourceSelect.val() === "90 Miles" ) {
+    		milesRadius = "maxDistance=90";
+    }
+
+	if(sourceSelect.val() === "100 Miles" ) {
+    		milesRadius = "maxDistance=100";
+    }
+
+
+	
+
+	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + milesRadius;
 
 	$.ajax({
 		url: queryURL,
@@ -102,6 +151,10 @@ function getTrails(lat, lng) {
 	});
 
 	//May want to validate response somehow later
+
+	
+
+
 }
 
 function renderCards(trails) {
@@ -138,6 +191,8 @@ function renderCards(trails) {
 		$("#resultList").append(card);
 	}
 }
+
+
 
 
 
