@@ -2,6 +2,11 @@
 
 var trails;
 
+var trailsLat
+
+var trailsLng
+
+
 
 
 //Get user name and location
@@ -43,7 +48,18 @@ $(document).ready(function() {
 	});
 
 	$("body").on("click", ".directionButtonClass", function(event) {
-		window.open("https://www.google.com/maps/")
+		
+		var spefLat = $(this).attr("data-lat")
+		var spefLng = $(this).attr("data-lng")
+		var spefName = $(this).attr("data-name")
+
+		var url = "https://www.google.com/maps/dir/?api=1";
+		//var origin = "&origin=" + tempLatitude + "," + tempLongitude;
+		var destination = "&destination=" + spefName;
+		var newUrl = new URL(url  + destination);
+		
+
+		window.open(newUrl , "_blank")
 	});
 });
 
@@ -153,6 +169,8 @@ function getTrails(lat, lng) {
 		} else {
 			alert("Trails query unsuccessful.");
 		}
+
+
 	});
 
 	//May want to validate response somehow later
@@ -166,6 +184,8 @@ function renderCards(trails) {
 	$("#resultList").empty();
 
 	for (i = 0; i < trails.length; i++) {
+
+		
 
 		var card = $("<div>");
 		card.data("index", i);
@@ -186,6 +206,9 @@ function renderCards(trails) {
 		difficultyDiv.text(trails[i].difficulty);
 		directionButton.text("Get Directions")
 		directionButton.addClass("directionButtonClass")
+		directionButton.attr("data-lat", trails[i].latitude)
+		directionButton.attr("data-lng", trails[i].longitude)
+		directionButton.attr("data-name", trails[i].name)
 
 		card.append(nameDiv);
 		card.append(lengthDiv);
@@ -195,6 +218,9 @@ function renderCards(trails) {
 		$("#resultList").append(card);
 	}
 }
+
+
+
 
 
 
