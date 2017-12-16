@@ -102,54 +102,54 @@ function getTrails(lat, lng) {
 
 	var queryURL = "https://www.hikingproject.com/data/get-trails?key=";
 
-	var milesRadius = "maxDistance=10"
+	var milesRadius = "&maxDistance=10"
 
 	var sourceSelect = $("#source")
 
 	if(sourceSelect.val() === "10 Miles" ) {
-    		milesRadius = "maxDistance=10";
+    		milesRadius = "&maxDistance=10";
     }
 
     if(sourceSelect.val() === "20 Miles" ) {
-    		milesRadius = "maxDistance=20";
+    		milesRadius = "&maxDistance=20";
     }
 
     if(sourceSelect.val() === "30 Miles" ) {
-    		milesRadius = "maxDistance=30";
+    		milesRadius = "&maxDistance=30";
     }
 
 	if(sourceSelect.val() === "40 Miles" ) {
-    		milesRadius = "maxDistance=40";
+    		milesRadius = "&maxDistance=40";
     }
 
 	if(sourceSelect.val() === "50 Miles" ) {
-    		milesRadius = "maxDistance=50";
+    		milesRadius = "&maxDistance=50";
     }
 
 	if(sourceSelect.val() === "60 Miles" ) {
-    		milesRadius = "maxDistance=60";
+    		milesRadius = "&maxDistance=60";
     }
 
 	if(sourceSelect.val() === "70 Miles" ) {
-    		milesRadius = "maxDistance=70";
+    		milesRadius = "&maxDistance=70";
     }
 
 	if(sourceSelect.val() === "80 Miles" ) {
-    		milesRadius = "maxDistance=80";
+    		milesRadius = "&maxDistance=80";
     }
 
 	if(sourceSelect.val() === "90 Miles" ) {
-    		milesRadius = "maxDistance=90";
+    		milesRadius = "&maxDistance=90";
     }
 
 	if(sourceSelect.val() === "100 Miles" ) {
-    		milesRadius = "maxDistance=100";
+    		milesRadius = "&maxDistance=100";
     }
 
 
 	
 
-	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + milesRadius;
+	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + milesRadius + "&maxResults=50//";
 
 	$.ajax({
 		url: queryURL,
@@ -194,6 +194,11 @@ function renderCards(trails) {
 		var image = $("<img>");
 		image.attr("src", trails[i].imgMedium);
 		image.attr("alt", trails[i].name);
+		if (image.attr("src") == "") {
+			var imagesArray = ["http://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "http://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "http://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "http://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "http://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"]
+			var randomImages = imagesArray[Math.floor(imagesArray.length * Math.random())];
+			image.attr("src", randomImages);
+		}
 		card.append(image);
 
 		var directionButton= $("<button>")
@@ -216,9 +221,11 @@ function renderCards(trails) {
 		card.append(directionButton);
 
 		$("#resultList").append(card);
+
+
 	}
 }
-<<<<<<< HEAD
+//<<<<<<< HEAD
 
 
 
@@ -227,8 +234,8 @@ function renderCards(trails) {
 
 
 
-=======
->>>>>>> dab2137e867946d1f055016bd327004362d6f1e8
+//=======
+//>>>>>>> dab2137e867946d1f055016bd327004362d6f1e8
 //get placeID for each result and geocode
 
 //autocomplete
