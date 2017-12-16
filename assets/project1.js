@@ -42,8 +42,19 @@ $(document).ready(function() {
 			}
 
 			if ( ($(`#trail-${key}`)) && (key.startsWith("img")) ) {
-				$(`#trail-${key}`).attr("src", value);
+				
+				var source = $(`#trail-${key}`).attr("src");
+
+				if (!(source = "")) {
+
+					$(`#trail-${key}`).attr("src", value);
+
+				} else if (source = "") {
+
+					$(`#trail-${key}`).attr("src", randomImages);
+				}
 			}
+			
 		});
 	});
 

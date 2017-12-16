@@ -248,3 +248,8 @@ p {
 	background-color: #009C66;
 	color: #fff;
 }
+
+#trail-imgMedium {
+	height: 250px;
+	width: 335px;
+}
