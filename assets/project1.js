@@ -43,7 +43,7 @@ $(document).ready(function() {
 	});
 
 	$("body").on("click", ".directionButtonClass", function(event) {
-		window.location = "https://www.google.com/maps/"
+		window.open("https://www.google.com/maps/")
 	});
 });
 
