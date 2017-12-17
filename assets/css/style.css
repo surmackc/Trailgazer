@@ -21,6 +21,12 @@ h4 {
 	font-style: italic;
 	font-size: 14px;
 }
+h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 12px;
+
+}
 p {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
@@ -40,7 +46,6 @@ p {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 	color: #009C66;
-	margin-left: 20px;
 	margin-bottom: -15px;
 }
 #page-title-2 {
@@ -49,7 +54,6 @@ p {
 	font-weight: 900;
 	color: #009C66;
 	line-height: 0px;
-	margin-left: 50px;
 	margin-bottom: 0px;
 }
 
