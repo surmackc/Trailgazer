@@ -26,8 +26,6 @@ var componentForm = { };
 $(document).ready(function() {
 	console.log("document.ready");
 
-	initFirebase();
-
 	showRandom();
 
 	geolocate();
@@ -54,34 +52,7 @@ $(document).ready(function() {
 	});
 });
 
-// Firebase database
-function initFirebase() {
-	// Initialize Firebase
-	var config = {
-	    apiKey: "AIzaSyDgCGQByTB-VEChXM6Dssa_Xir_EcGJHJA",
-	    authDomain: "class-project-trails-api.firebaseapp.com",
-	    databaseURL: "https://class-project-trails-api.firebaseio.com",
-	    projectId: "class-project-trails-api",
-	    storageBucket: "class-project-trails-api.appspot.com",
-	    messagingSenderId: "334324080267"
-	};
 
-	if (firebase.apps.length === 0){
-	firebase.initializeApp(config);
-	}
-
-	// Get a reference to the database service
-	var database = firebase.database();
-
-	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-
-	    var newFavTrail = childSnapshot.val().name;
-	    var site = childSnapshot.val().site;
-
-	    $("#favorite-list").append("<li> <a href=" + site + ">" + newFavTrail + "</a> </li>");
-
-	});
-}
 
 // Google Maps API
 // executes upon search submit
@@ -169,6 +140,32 @@ function showDetails() {
 	});
 }
 
+// Firebase database
+	// Initialize Firebase
+	var config = {
+	    apiKey: "AIzaSyDgCGQByTB-VEChXM6Dssa_Xir_EcGJHJA",
+	    authDomain: "class-project-trails-api.firebaseapp.com",
+	    databaseURL: "https://class-project-trails-api.firebaseio.com",
+	    projectId: "class-project-trails-api",
+	    storageBucket: "class-project-trails-api.appspot.com",
+	    messagingSenderId: "334324080267"
+	};
+
+	if (firebase.apps.length === 0){
+	firebase.initializeApp(config);
+	}
+
+	// Get a reference to the database service
+	var database = firebase.database();
+
+	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+	    var newFavTrail = childSnapshot.val().name;
+	    var site = childSnapshot.val().site;
+
+	    $("#favorite-list").append("<li> <a href=" + site + ">" + newFavTrail + "</a> </li>");
+
+	});
 // saves clicked item to favorites
 // pushes to Firebase
 function saveToFavorites(event) {
