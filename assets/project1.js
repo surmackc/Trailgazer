@@ -124,6 +124,11 @@ function showDetails() {
 			$(`#trail-${key}`).text(value);
 		}
 
+		if ( ($(`#trail-${key}`)) && (key.startsWith("length")) ){
+			$(`#trail-${key}`).prepend("Length: ");
+			$(`#trail-${key}`).append(" mi");
+		}
+
 		if ( ($(`#trail-${key}`)) && (key.startsWith("img")) ) {
 
 			var source = $(`#trail-${key}`).attr("src");
@@ -137,6 +142,26 @@ function showDetails() {
 				$(`#trail-${key}`).attr("src", randomImages);
 			}
 		}
+
+		if 	($("#trail-difficulty").text() === "green") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffGreen30.png" id="difficultyImg"></h5>');
+		}
+		if 	($("#trail-difficulty").text() === "greenBlue") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffGreenBlue30.png" id="difficultyImg"></h5>');
+		}
+		if 	($("#trail-difficulty").text() === "blue") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlue30.png" id="difficultyImg"></h5>');
+		}
+		if 	($("#trail-difficulty").text() === "blueBlack") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlueBlack30.png" id="difficultyImg"></h5>');
+		}
+		if 	($("#trail-difficulty").text() === "black") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+		}
+		if 	($("#trail-difficulty").text() === "dblack") {
+			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+		}
+
 	});
 }
 
@@ -283,7 +308,7 @@ function renderCards() {
 		image.attr("alt", trails[i].name);
 		image.data("index", i);
 		nameDiv.text(trails[i].name);
-		lengthDiv.text(trails[i].length);
+		lengthDiv.text(trails[i].length + " mi");
 		difficultyDiv.text(trails[i].difficulty);
 		directionButton.text("Get Directions");
 		directionButton.addClass("directionButtonClass");
@@ -302,6 +327,25 @@ function renderCards() {
 			var randomImages = imagesArray[Math.floor(imagesArray.length * Math.random())];
 
 			image.attr("src", randomImages);
+		}
+
+		if (difficultyDiv.text() === "green"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffGreen30.png" id="difficultyImg"></h5>');
+		}
+		if (difficultyDiv.text() === "greenBlue"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffGreenBlue30.png" id="difficultyImg"></h5>');
+		}
+		if (difficultyDiv.text() === "blue"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlue30.png" id="difficultyImg"></h5>');
+		}
+		if (difficultyDiv.text() === "blueBlack"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlueBlack30.png" id="difficultyImg"></h5>');
+		}
+		if (difficultyDiv.text() === "black"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+		}
+		if (difficultyDiv.text() === "dblack"){
+			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
 		}
 
 		card.append(image);

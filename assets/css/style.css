@@ -252,3 +252,9 @@ p {
 	background-color: #009C66;
 	color: #fff;
 }
+
+#difficultyImg {
+	width: 30px;
+	height:30px;
+	margin-bottom: 10px;
+}
