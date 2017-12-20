@@ -10,6 +10,8 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css">
+
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>
@@ -76,19 +78,30 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6  trail-location" id="trail-location">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 trail-location" id="trail-location">
                 <center><span id = "location-title">Location Information</span></center>
                 <div class ="map" id="map">
                 </div>
-<!--                 <center><span id="map-title">Trail Location</span></center> -->
+                <center>
+                    <h3 id="location-title" >
+                        iNaturalist Wildlife Sighting Counts by Month
+                    </h3>
+                </center>
+                <div class="ct-chart ct-golden-section"></div>s
             </div>
         </div>
 
-        <div class="col-12">
-            <h3>Favorites List</h3>
-            <ol id="favorite-list"></ol>
-        </div>
+        <div class="row mt-3">
+            <div class="col-xs-12 col-lg-6">
+                <h3>Favorites List</h3>
+                <ol id="favorite-list"></ol>
+            </div>
 
+            <div class="col-xs-12 col-lg-6">
+                <h3>Wildlife Sightings</h3>
+                <div class="wildlife-image"></div>
+            </div>
+        </div>
         <div class="col-12 search-results">
             <h3>Search Results</h3>
             <div class="row" id="resultList">
@@ -108,6 +121,9 @@
 
     <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Chartist -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
 
     <!--Javascript with API key -->
     <script src="assets/key.js"></script>

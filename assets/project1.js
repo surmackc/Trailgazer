@@ -92,6 +92,7 @@ function geocode(address) {
 			};
 
 			getTrails(lat, lng);
+			iNaturalist(lat, lng);
 
 		} else {
 			alert('Geocode unsuccessful.');
@@ -111,12 +112,22 @@ function showRandom() {
 	var lng = placeholder[rand].lng;
 
 	getTrails(lat, lng);
+	iNaturalist(lat, lng);
 }
 
 // executes when result img clicked
 // generates details card HTML
 function showDetails() {
 	console.log("showDetails");
+
+	window.scrollTo(0, 160);
+
+	var mapLat = $(this).data("map-lat");
+	var mapLng = $(this).data("map-lng");
+	map.flyTo({
+		center: [mapLng, mapLat]
+	});
+
 
 	var index = $(this).data("index");
 
@@ -191,7 +202,7 @@ function showDetails() {
 	// Get a reference to the database service
 	var database = firebase.database();
 
-		
+
 // saves clicked item to favorites
 // pushes to Firebase
 function saveToFavorites(event) {
@@ -250,7 +261,7 @@ database.ref().on("value", function(snapshot) {
                     name: name,
                     key: key,
                     url: url
-                  
+
                 })
             }
         }
@@ -372,8 +383,8 @@ function renderCards() {
 		favoriteButton.data("index", i);
 		favoriteButton.on('click', saveToFavorites);
 
-		image.attr("map-lat", trails[i].latitude);
-		image.attr("map-lng", trails[i].longitude);
+		image.data("map-lat", trails[i].latitude);
+		image.data("map-lng", trails[i].longitude);
 
 
 		if (image.attr("src") === "") {
@@ -415,16 +426,6 @@ function renderCards() {
 	}
 
 	$(".search-results img").first().click();
-
-		$(".search-results img").on('click', function(){
-		window.scrollTo(0, 160);
-		var mapLat = $(this).attr("map-lat");
-		var mapLng = $(this).attr("map-lng");
-		console.log(mapLat);
-		map.flyTo({
-			center: [mapLng, mapLat]
-		});
-	});
 
 	//change map location
 }
@@ -506,6 +507,63 @@ var map = new mapboxgl.Map({
     zoom: 14,
     style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
 });
+
+// iNaturalist API
+function iNaturalist(lat, lng) {
+
+	console.log("naturalist", lat, lng);
+
+	var radius = 20;
+
+	var speciesQueryURL = "http://api.inaturalist.org/v1/observations/"
+		+ "species_counts?photos=true&radius="
+		+ radius + "&lat=" + lat + "&lng=" + lng;
+
+	var histogramQueryURL = "http://api.inaturalist.org/v1/observations/histogram?lat="
+		+ lat + "&lng=" + lng + "&radius=" + radius
+		+ "&date_field=observed&interval=month_of_year";
+
+	$.ajax({
+		url: speciesQueryURL,
+		method: 'GET'
+	}).done(function(response) {
+		console.log(response);
+	});
+
+	$.ajax({
+		url: histogramQueryURL,
+		method: 'GET'
+	}).done(function(response) {
+
+		var data = response.results.month_of_year;
+		var dataArray = [];
+
+		$.each(data, function(month, value) {
+			dataArray.push(value);
+		});
+
+		histogram(dataArray);
+	});
+}
+
+//Chartist API
+function histogram(dataArray) {
+	console.log(dataArray);
+
+	var labelsArray = [
+		"Jan", "Feb", "Mar", "Apr",
+		"May", "Jun", "Jul", "Aug",
+		"Sep", "Oct", "Nov", "Dec"
+	]
+
+	new Chartist.Bar('.ct-chart', {
+	  labels: labelsArray,
+	  series: dataArray,
+	}, {
+	  distributeSeries: true
+	});
+
+}
 
 // custom functions for get and set
 // can be used more easily than built-in
