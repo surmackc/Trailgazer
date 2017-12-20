@@ -29,7 +29,7 @@ h4 {
 h5 {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
-	font-size: 12px;
+	font-size: 14px;
 }
 h6 {
 	font-family: 'Montserrat', sans-serif;
@@ -168,7 +168,7 @@ li {
     margin-bottom: 15px;
 }
 
-#trail-length {
+#trail-length, #weather-title {
 	margin-top: 10px;
 	color: #009C66;
 	font-weight: 500;
@@ -179,10 +179,19 @@ li {
 	height:40px;
 	margin: 10px 0;
 }
-#difficultyImgLg {
+#difficultyImgLg, .weather .icon {
 	width: 80px;
 	height:80px;
 	clear:both;
+}
+.trail-specs, .weather {
+
+}
+.weather .icon {
+  background-image: url('https://quickwebresources.com/wp-content/uploads/2012/06/weather-icons.jpg');
+  border-radius: 20%;
+  border: 1px solid;
+  margin: 0 auto;
 }
 
 #favorite-list {

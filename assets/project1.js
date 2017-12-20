@@ -344,18 +344,40 @@ function getTrails(lat, lng) {
 
 // Open Weather API
 function getWeather(lat, lng) {
-	console.log("getWeather")
+	console.log("getWeather", lat, lng);
 
 	var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=" + keyWeather;
+
+	var weatherText;
 
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
-		$("#currentTempId").html(response.main.temp + "°F,  " + response.weather[0].description)
+		weatherText = response.weather[0].description;
+	console.log(weatherText);
+		$("#currentTempId").html(response.main.temp + "°F");
 		//$("#tempSummaryId").html(response.weather[0].description)
+
+		//generates weather icons
+		//source: https://codepen.io/baumant/pen/Yyyoqd
+		weatherText = weatherText.split(" ");
+
+		for (i = 0; i <= weatherText.length - 1; i++) {
+			if (weatherText[i] == "clear") {
+		  		$('.icon').css('background-position', '505px -10px');
+			} else if (weatherText[i] == "overcast" || weatherText[i] == "clouds" || weatherText[i] == "cloudy") {
+		  		$('.icon').css('background-position', '505px -86px');
+			} else if (weatherText[i] == "rain" || weatherText[i] == "rainy") {
+		  		$('.icon').css('background-position', '220px -158px');
+			}
+	    }
 	});
+
+
 }
+
+
 
 // generates dynamic HTML from results
 // fills in placeholder if img not available
