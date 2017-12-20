@@ -324,6 +324,7 @@ function getTrails(lat, lng) {
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
+		console.log(response);
 		var status = response.success;
 		if (status === 1) {
 
@@ -343,13 +344,14 @@ function getTrails(lat, lng) {
 
 // Open Weather API
 function getWeather(lat, lng) {
+	console.log("getWeather")
+
 	var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=" + keyWeather;
 
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
-		console.log(response)
 		$("#currentTempId").html(response.main.temp + "°F,  " + response.weather[0].description)
 		//$("#tempSummaryId").html(response.weather[0].description)
 	});
@@ -362,6 +364,7 @@ function renderCards() {
 
 	$("#resultList").empty();
 
+	console.log(trails);
 	for (i = 0; i < trails.length; i++) {
 
 		var card = $("<div>");
@@ -460,7 +463,7 @@ function geolocate() {
 
 	if (navigator.geolocation) {
 
-		var lat, lng;
+		var geoLat, geoLng;
 
 		navigator.geolocation.getCurrentPosition(function(position) {
 
@@ -476,12 +479,16 @@ function geolocate() {
 			  radius: position.coords.accuracy
 			});
 
-			lat = geolocation.lat;
-			lng = geolocation.lng;
+			geoLat = geolocation.lat;
+			geoLng = geolocation.lng;
 
 			autocomplete.setBounds(circle.getBounds());
+
+			getTrails(geoLat, geoLng);
+			iNaturalist(geoLat, geoLng);
+			getWeather(geoLat, geoLng);
 		});
-  }
+    }
 }
 
 // Google Maps Places API
@@ -534,7 +541,7 @@ function iNaturalist(lat, lng) {
 		url: speciesQueryURL,
 		method: 'GET'
 	}).done(function(response) {
-		console.log(response);
+
 	});
 
 	$.ajax({
@@ -555,7 +562,6 @@ function iNaturalist(lat, lng) {
 
 //Chartist API
 function histogram(dataArray) {
-	console.log(dataArray);
 
 	var labelsArray = [
 		"Jan", "Feb", "Mar", "Apr",
