@@ -16,6 +16,8 @@ var placeholder = [
 	{lat: 40.3710, lng: -105.6419},
 ];
 
+var mapLat = 37.2928;
+var mapLng = -113.0081;
 // needed for initAutocomplete
 // some things do not work if not global
 var placeSearch;
@@ -144,22 +146,28 @@ function showDetails() {
 		}
 
 		if 	($("#trail-difficulty").text() === "green") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffGreen30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffGreen30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Easier</h5></span>');
 		}
 		if 	($("#trail-difficulty").text() === "greenBlue") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffGreenBlue30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffGreenBlue30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Easier/Moderate</h5></span>');
 		}
 		if 	($("#trail-difficulty").text() === "blue") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlue30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffBlue30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Moderate</h5></span>');
 		}
 		if 	($("#trail-difficulty").text() === "blueBlack") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlueBlack30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffBlueBlack30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Moderate/Hard</h5></span>');
 		}
 		if 	($("#trail-difficulty").text() === "black") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffBlack30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Hard</h5></span>');
 		}
 		if 	($("#trail-difficulty").text() === "dblack") {
-			$("#trail-difficulty").html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffBlack30.svg" id="difficultyImgLg"></h5>');
+			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Hard</h5></span>');
 		}
 
 	});
@@ -303,9 +311,11 @@ function renderCards() {
 		var directionButton= $("<button>");
 		var favoriteButton = $("<button>");
 
+
 		card.addClass("imgDiv col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3");
 		image.attr("src", trails[i].imgMedium);
 		image.attr("alt", trails[i].name);
+
 		image.data("index", i);
 		nameDiv.text(trails[i].name);
 		lengthDiv.text(trails[i].length + " mi");
@@ -320,6 +330,10 @@ function renderCards() {
 		favoriteButton.data("index", i);
 		favoriteButton.on('click', saveToFavorites);
 
+		image.attr("map-lat", trails[i].latitude);
+		image.attr("map-lng", trails[i].longitude);
+
+
 		if (image.attr("src") === "") {
 
 			var imagesArray = ["http://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "http://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "http://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "http://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "http://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"];
@@ -330,22 +344,22 @@ function renderCards() {
 		}
 
 		if (difficultyDiv.text() === "green"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffGreen30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffGreen30.svg" id="difficultyImg"></h5>');
 		}
 		if (difficultyDiv.text() === "greenBlue"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffGreenBlue30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffGreenBlue30.svg" id="difficultyImg"></h5>');
 		}
 		if (difficultyDiv.text() === "blue"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlue30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffBlue30.svg" id="difficultyImg"></h5>');
 		}
 		if (difficultyDiv.text() === "blueBlack"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlueBlack30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffBlueBlack30.svg" id="difficultyImg"></h5>');
 		}
 		if (difficultyDiv.text() === "black"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffBlack30.svg" id="difficultyImg"></h5>');
 		}
 		if (difficultyDiv.text() === "dblack"){
-			difficultyDiv.html('<h5>Difficulty: <img src="assets/images/diffBlack30.png" id="difficultyImg"></h5>');
+			difficultyDiv.html('<h5><img src="assets/images/diffBlack30.svg" id="difficultyImg"></h5>');
 		}
 
 		card.append(image);
@@ -359,6 +373,18 @@ function renderCards() {
 	}
 
 	$(".search-results img").first().click();
+
+		$(".search-results img").on('click', function(){
+		window.scrollTo(0, 160);
+		var mapLat = $(this).attr("map-lat");
+		var mapLng = $(this).attr("map-lng");
+		console.log(mapLat);
+		map.flyTo({
+			center: [mapLng, mapLat]
+		});
+	});
+
+	//change map location
 }
 
 // Google Maps Places API
@@ -429,6 +455,15 @@ function fillInAddress() {
 	  }
 	}
 }
+
+mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbmJoIiwiYSI6ImNqYmM5N20zbTFneWQzMm1yOTMzdnhwbjkifQ.LsCkehEVMnMWOEui5tZDCw';
+
+var map = new mapboxgl.Map({
+    container: 'map',
+    center: [mapLng, mapLat],
+    zoom: 14,
+    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
+});
 
 // custom functions for get and set
 // can be used more easily than built-in

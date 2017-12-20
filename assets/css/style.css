@@ -9,6 +9,11 @@ h1 {
 	font-weight: 900;
 	font-size: 20px;
 }
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+}
 
 h3 {
 	font-family: 'Montserrat', sans-serif;
@@ -25,28 +30,43 @@ h5 {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
 	font-size: 12px;
+}
+h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 200;
+	font-size: 12px;
+}
 
 }
 p {
 	font-family: 'Montserrat', sans-serif;
-	font-weight: 300;
+	font-weight: 500;
 	font-size: 14px;
+}
+
+li {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 12px;
 
 }
 .page-title {
 	text-align: center;
-	background-image: url(../images/page-title-bg.png);
+	background-image: url(../images/page-title-bg.svg);
 	background-repeat: no-repeat;
 	background-position: center bottom;
-	height:100px;
+	width: 450px;
+	height:150px;
 }
 
 #page-title-1 {
 	font-size: 50px;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
+	line-height: 35px;
 	color: #009C66;
-	margin-bottom: -15px;
+	margin-top:50px;
+	margin-bottom: 0px;
 }
 #page-title-2 {
 	font-size: 50px;
@@ -62,31 +82,29 @@ p {
 }
 
 
-#trail-card {
-	margin-top: 10px;
-	border-top: .5px solid #9BD3BD;
-}
-
-.trail-info {
-	background: #E7EFE6;
-	padding:15px 30px 0 0;
-	margin-top: 10px;
-	text-align: center;
-	border-radius: 10px;
-}
 
 .search-results {
+/*	background: #E7EFE6;*/
 	width: 100%;
 	text-align: center;
 	margin-top: 10px;
 }
 
+
+
 #resultList {
+	background: #E7EFE6;
+	padding: 10px;
+	border-radius: 10px;
 }
 
 .imgDiv {
 	position: relative;
 	padding: 5px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+
 }
 
 .imgDiv img {
@@ -99,61 +117,140 @@ p {
 .hide {
 	display: none;
 }
+ /*Trail information section*/
 
-.location-results {
-
-	text-align: center;
-	padding:15px 0 0 0;
+#trail-card {
+/*	border-top: .5px solid #9BD3BD;*/
 }
 
+.trail-info {
+	background: #E7EFE6;
+	border-right: 5px solid #F0F9EF;
+	padding:15px 0 0 0;
+	margin-top: 10px;
+	text-align: center;
+
+}
 .trail-name {
-	margin-left:15px;
 	text-align: center;
 	border-bottom: .5px solid #fff;
-	color: #009C66;
+	font-weight: 300;
+	color: #000
+}
+#trail-name {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 30px;
+	color: #000;
 
 }
 
 .trail-summary {
-	margin-left:15px;
-
+	margin-left: 15px;
+	margin-right: 15px;
 	margin-top: 10px;
 	text-align: left;
-	display: block;
-
+	font-weight: 300;
+}
+#trail-summary {
+	margin-right:15px;
+		margin-right: 15px;
 }
 
 .trail-length {
-	margin-left:15px;
+	margin-top: 10px;
+	color: #009C66;
+
 	text-align: center;
+	font-weight: 200;
 }
 
 .trail-difficulty {
-	margin-left:15px;
+
 	text-align: center;
 
 }
 
 .trail-image {
+	width:400px;
 	text-align: center;
 	padding:15px 0 0 0;
+
+
 }
 
 #trail-image {
+	margin-bottom: 10px;
+	border-bottom: .5px solid #fff;
 
 }
 .trail-image img {
 	object-fit: cover;
+	width: 390px;
 	height: 350px;
+	border: 7px solid #fff;
+	margin-bottom: 15px;
+}
+
+#difficultyImg {
+	width: 40px;
+	height:40px;
+	margin-bottom: 10px;
+}
+#difficultyImgLg {
+	width: 80px;
+	height:80px;
+	clear:both;
+}
+#diffSecondary {
+
+
+}
+#diffCard{
+/*	margin-top: 10px;*/
+}
+
+.trail-location {
+	background: #E7EFE6;
+	margin-top: 10px;
+	padding-top: 25px;
+	border-left: 5px solid #F0F9EF;
+}
+#location-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color: #000;
+}
+
+/*Map location section*/
+.map {
+	border: 5px solid #fff;
+
+}
+#map {
+	height: 350px;
+	margin-top: 45px;
+	border: 7px solid #fff;
+
+}
+
+#map-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color: #000;
+	padding-bottom: 10px;
 }
 
 /* Address Search Input & Autocomplete */
 
 #locationField, #controls {
-   	margin-top: 20px;
+   	margin-top: 110px;
     position: relative;
     width: 480px;
     height: 100px;
+
 }
 #address-input {
     top: 0px;
@@ -257,8 +354,18 @@ p {
 	color: #fff;
 }
 
-#difficultyImg {
-	width: 30px;
-	height:30px;
-	margin-bottom: 10px;
+
+@media screen and (max-width: 990px) {
+	#locationField, #controls {
+   	margin-top: 10px;
+    position: relative;
+    width: 480px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.trail-info {
+
+	margin-top: 0px;
+
+}
 }
