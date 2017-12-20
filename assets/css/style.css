@@ -47,7 +47,7 @@ p {
 li {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 500;
-	font-size: 12px;
+	font-size: 16px;
 
 }
 .page-title {
@@ -111,6 +111,7 @@ li {
 	width: 100%;
     height: 250px;
 	object-fit: cover;
+	cursor: pointer;
 }
 
 
@@ -352,8 +353,11 @@ li {
 .directionButtonClass {
 	background-color: #009C66;
 	color: #fff;
+	cursor: pointer;
 }
-
+.favorite-button {
+	cursor: pointer;
+}
 
 @media screen and (max-width: 990px) {
 	#locationField, #controls {
