@@ -41,8 +41,8 @@ $(document).ready(function() {
 	$(".search-results").on("click", "img", showDetails);
 
 	$("body").on("click", ".directionButtonClass", function(event) {
-		//var spefLat = $(this).attr("data-lat");
-		//var spefLng = $(this).attr("data-lng");
+		var spefLat = $(this).attr("data-lat");
+		var spefLng = $(this).attr("data-lng");
 		var spefName = $(this).attr("data-name");
 
 		var url = "https://www.google.com/maps/dir/?api=1";
@@ -93,6 +93,7 @@ function geocode(address) {
 
 			getTrails(lat, lng);
 			iNaturalist(lat, lng);
+			getWeather(lat, lng);
 
 		} else {
 			alert('Geocode unsuccessful.');
@@ -113,14 +114,13 @@ function showRandom() {
 
 	getTrails(lat, lng);
 	iNaturalist(lat, lng);
+	getWeather(lat, lng);
 }
 
 // executes when result img clicked
 // generates details card HTML
 function showDetails() {
 	console.log("showDetails");
-
-	console.log()
 
 	window.scrollTo(0, 160);
 
@@ -130,23 +130,10 @@ function showDetails() {
 		center: [mapLng, mapLat]
 	});
 
-	var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + mapLat + "&lon=" + mapLng + "&units=imperial&appid=" + keyWeather;
-	
-	$.ajax({
-		url: queryURL,
-		method: 'GET'
-	}).done(function(response) {
-		console.log(response)
-		$("#currentTempId").html(response.main.temp + "°F,  " + response.weather[0].description)
-		//$("#tempSummaryId").html(response.weather[0].description)
-	});
-
-
-	var index = $(this).data("index");
 
 	var self = $(this);
+	var index = self.data("index");
 
-	
 	$.each(trails[index], function populate(key, value) {
 
 		if ( $(`#trail-${key}`) ) {
@@ -158,23 +145,10 @@ function showDetails() {
 			$(`#trail-${key}`).append(" mi");
 		}
 
-		// if ( ($(`#trail-${key}`)) && (key.startsWith("img")) ) {
-
-		// 	var source = $(`#trail-${key}`).attr("src");
-
-		// 	if (!(source === "")) {
-
-		// 		$(`#trail-${key}`).attr("src", value);
-
-		// 	} else if (source === "") {
-
-		// 		$(`#trail-${key}`).attr("src", randomImages);
-		// 	}
-		// }
-
 		$("#trail-imgMedium").attr("src", self.attr("src"))
 
 		var imageSource = $(this).attr("src")
+
 
 		if 	($("#trail-difficulty").text() === "green") {
 			$("#trail-difficulty").html('<h5 id="diffCard"><img src="assets/images/diffGreen30.svg" id="difficultyImgLg"></h5>');
@@ -201,13 +175,7 @@ function showDetails() {
 			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Hard</h5></span>');
 		}
 
-		
 	});
-
-	//$("#directionButtonCard").html("<button class= directionButtonClass>Get Directions</button")
-
-	//$("#favoriteButtonCard").html("<button class= favorite-button>Favorite</button>")
-
 }
 
 // Firebase database
@@ -251,7 +219,7 @@ function saveToFavorites(event) {
 function refreshUI(list) {
     var lis = '';
     for (var i = 0; i < list.length; i++) {
-        lis += "<li data-key=" + list[i].key + ">" + "<a href=" + list[i].url + ">" + list[i].name + "</a>" + " " + '[' + genLinks(list[i].key, list[i].name) + ']' + '</li>';
+        lis += "<li data-key=" + list[i].key + ">" + "<a href=" + list[i].url + ">" + list[i].name + "</a>" + " " + genLinks(list[i].key, list[i].name) + '</li>';
     };
     document.getElementById('favorite-list').innerHTML = lis;
 };
@@ -259,7 +227,7 @@ function refreshUI(list) {
 // generates our delete link as our favorites are saved
 function genLinks(key, name) {
     var links = '';
-    links += '<a href="javascript:del(\'' + key + '\',\'' + name + '\')">Delete</a>';
+    links += '<a class="button" href="javascript:del(\'' + key + '\',\'' + name + '\')">[Delete]</button>';
     return links;
 };
 
@@ -373,6 +341,20 @@ function getTrails(lat, lng) {
 	//May want to validate response somehow later
 }
 
+// Open Weather API
+function getWeather(lat, lng) {
+	var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lng + "&units=imperial&appid=" + keyWeather;
+
+	$.ajax({
+		url: queryURL,
+		method: 'GET'
+	}).done(function(response) {
+		console.log(response)
+		$("#currentTempId").html(response.main.temp + "°F,  " + response.weather[0].description)
+		//$("#tempSummaryId").html(response.weather[0].description)
+	});
+}
+
 // generates dynamic HTML from results
 // fills in placeholder if img not available
 function renderCards() {
@@ -389,7 +371,6 @@ function renderCards() {
 		var difficultyDiv = $('<div class="difficulty">');
 		var directionButton= $("<button>");
 		var favoriteButton = $("<button>");
-
 
 		card.addClass("imgDiv col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3");
 		image.attr("src", trails[i].imgMedium);
