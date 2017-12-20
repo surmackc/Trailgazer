@@ -191,18 +191,10 @@ function showDetails() {
 	// Get a reference to the database service
 	var database = firebase.database();
 
-	database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-
-	    var newFavTrail = childSnapshot.val().name;
-	    var site = childSnapshot.val().site;
-
-	    $("#favorite-list").append("<li> <a href=" + site + ">" + newFavTrail + "</a> </li>");
-
-	});
+		
 // saves clicked item to favorites
 // pushes to Firebase
 function saveToFavorites(event) {
-	console.log(saveToFavorites);
 
     event.preventDefault();
 
@@ -216,7 +208,57 @@ function saveToFavorites(event) {
     };
 
     database.ref().push(newFavTrail);
+};
+
+// refreshes our HTML list based on added or deleted data
+function refreshUI(list) {
+    var lis = '';
+    for (var i = 0; i < list.length; i++) {
+        lis += "<li data-key=" + list[i].key + ">" + "<a href=" + list[i].url + ">" + list[i].name + "</a>" + " " + '[' + genLinks(list[i].key, list[i].name) + ']' + '</li>';
+    };
+    document.getElementById('favorite-list').innerHTML = lis;
+};
+
+// generates our delete link as our favorites are saved
+function genLinks(key, name) {
+    var links = '';
+    links += '<a href="javascript:del(\'' + key + '\',\'' + name + '\')">Delete</a>';
+    return links;
+};
+
+// delete function which calls the database through buildEndPoint and deletes the items from our list
+function del(key, name) {
+        var deleteFavorites = buildEndPoint(key);
+        deleteFavorites.remove();
+    }
+
+// returning our most up to date database
+function buildEndPoint (key) {
+	return database.ref(`/${key}`) ;
 }
+
+// taking our database and populating info on initial load as well as any other updates
+database.ref().on("value", function(snapshot) {
+    var data = snapshot.val();
+    var list = [];
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            name = data[key].name ? data[key].name : '';
+            url = data[key].site;
+            if (name.trim().length > 0) {
+                list.push({
+                    name: name,
+                    key: key,
+                    url: url
+                  
+                })
+            }
+        }
+    }
+// calling our refreshUI on our most up to date list to HTML
+    refreshUI(list);
+});
+
 
 // REI Hiking Project API
 // source of hiking trail data
