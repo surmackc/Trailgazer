@@ -81,7 +81,7 @@ li {
 	float: right;
 }
 
-.search-results {
+.search-results, .favorites-list {
 /*	background: #E7EFE6;*/
 	width: 100%;
 	text-align: center;
@@ -89,9 +89,7 @@ li {
 	border-right: 10px solid #F0F9EF;
 }
 
-
-
-#resultList {
+#resultList, {
 	background: #E7EFE6;
 	padding: 10px;
 	border-radius: 10px;
@@ -119,7 +117,7 @@ li {
 
  /*Trail information section*/
 
-#trail-card {
+#trail-card, #favorite-list {
 	margin-top: 10px;
 	background: #E7EFE6;
 	text-align: center;
