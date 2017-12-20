@@ -551,11 +551,11 @@ function iNaturalist(lat, lng) {
 
 	var radius = 20;
 
-	var speciesQueryURL = "http://api.inaturalist.org/v1/observations/"
+	var speciesQueryURL = "https://api.inaturalist.org/v1/observations/"
 		+ "species_counts?photos=true&radius="
 		+ radius + "&lat=" + lat + "&lng=" + lng;
 
-	var histogramQueryURL = "http://api.inaturalist.org/v1/observations/histogram?lat="
+	var histogramQueryURL = "https://api.inaturalist.org/v1/observations/histogram?lat="
 		+ lat + "&lng=" + lng + "&radius=" + radius
 		+ "&date_field=observed&interval=month_of_year";
 
