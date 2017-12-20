@@ -421,7 +421,7 @@ function renderCards() {
 
 		if (image.attr("src") === "") {
 
-			var imagesArray = ["http://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "http://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "http://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "http://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "http://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"];
+			var imagesArray = ["https://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "https://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "https://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "https://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "https://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"];
 
 			var randomImages = imagesArray[Math.floor(imagesArray.length * Math.random())];
 
@@ -551,11 +551,11 @@ function iNaturalist(lat, lng) {
 
 	var radius = 20;
 
-	var speciesQueryURL = "http://api.inaturalist.org/v1/observations/"
+	var speciesQueryURL = "https://api.inaturalist.org/v1/observations/"
 		+ "species_counts?photos=true&radius="
 		+ radius + "&lat=" + lat + "&lng=" + lng;
 
-	var histogramQueryURL = "http://api.inaturalist.org/v1/observations/histogram?lat="
+	var histogramQueryURL = "https://api.inaturalist.org/v1/observations/histogram?lat="
 		+ lat + "&lng=" + lng + "&radius=" + radius
 		+ "&date_field=observed&interval=month_of_year";
 
