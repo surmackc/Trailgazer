@@ -94,6 +94,7 @@ function geocode(address) {
 			};
 
 			getTrails(lat, lng);
+			console.log(lat, lng);
 
 		} else {
 			alert('Geocode unsuccessful.');
@@ -172,6 +173,7 @@ function showDetails() {
 
 	iNaturalist(lat, lng);
 	getWeather(lat, lng);
+	mapBox(lat, lng);
 }
 
 // Firebase database
@@ -351,8 +353,8 @@ function getWeather(lat, lng) {
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
+
 		weatherText = response.weather[0].description;
-	console.log(weatherText);
 		$("#currentTempId").html(response.main.temp + "°F");
 		//$("#tempSummaryId").html(response.weather[0].description)
 
@@ -373,8 +375,6 @@ function getWeather(lat, lng) {
 
 
 }
-
-
 
 // generates dynamic HTML from results
 // fills in placeholder if img not available
@@ -503,8 +503,6 @@ function geolocate() {
 			autocomplete.setBounds(circle.getBounds());
 
 			getTrails(geoLat, geoLng);
-			iNaturalist(geoLat, geoLng);
-			getWeather(geoLat, geoLng);
 		});
     }
 }
@@ -531,21 +529,19 @@ function fillInAddress() {
 	}
 }
 
-function mapBox() {
-	var mapLat = $(this).data("map-lat");
-	var mapLng = $(this).data("map-lng");
+function mapBox(lat, lng) {
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbmJoIiwiYSI6ImNqYmM5N20zbTFneWQzMm1yOTMzdnhwbjkifQ.LsCkehEVMnMWOEui5tZDCw';
 
 	var map = new mapboxgl.Map({
 	    container: 'map',
-	    center: [mapLng, mapLat],
+	    center: [lng, lat],
 	    zoom: 14,
 	    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
 	});
 
 	map.flyTo({
-		center: [mapLng, mapLat]
+		center: [lng, lat]
 	});
 
 }
@@ -570,16 +566,69 @@ function iNaturalist(lat, lng) {
 		url: speciesQueryURL,
 		method: 'GET'
 	}).done(function(response) {
-		console.log(response);
 
-		var species = response.results;
+		species = response.results;
 
-		// $.each(results[index], function populate(key, value) {
+		var imageURL = species[0].taxon.default_photo.medium_url;
+		var linkURL = species[0].taxon.default_photo.url;
+		var count = species[0].count;
+		var taxon = species[0].taxon.name;
+		var name = species[0].taxon.preferred_common_name;
 
-		// 	if ( $(`#trail-${key}`) ) {
-		// 		$(`#trail-${key}`).text(value);
-		// 	}
-		// }
+		$("#wild-img").attr("src", imageURL);
+		$("#wild-img").data("index", 0);
+		$("#wild-link").attr("href", linkURL);
+		$("#count").text(count);
+		$("#taxon").text(taxon);
+		$("#name").text(name);
+
+
+		$("#right").on("click", function next() {
+			console.log(species.length);
+
+
+			var i = $("#wild-img").data("index");
+
+			if (i < species.length) {
+				i ++;
+
+				var imageURL = species[i].taxon.default_photo.medium_url;
+				var linkURL = species[i].taxon.default_photo.url;
+				var count = species[i].count;
+				var taxon = species[i].taxon.name;
+				var name = species[i].taxon.preferred_common_name;
+
+				$("#wild-img").attr("src", imageURL);
+				$("#wild-img").data("index", i);
+				$("#wild-link").attr("href", linkURL);
+				$("#count").text(count);
+				$("#taxon").text(taxon);
+				$("#name").text(name);
+			}
+		})
+
+		$("#left").on("click", function previous() {
+			console.log("prev");
+
+			var i = $("#wild-img").data("index");
+
+			if (i > 0) {
+				i --;
+
+				var imageURL = species[i].taxon.default_photo.medium_url;
+				var linkURL = species[i].taxon.default_photo.url;
+				var count = species[i].count;
+				var taxon = species[i].taxon.name;
+				var name = species[i].taxon.preferred_common_name;
+
+				$("#wild-img").attr("src", imageURL);
+				$("#wild-img").data("index", i);
+				$("#wild-link").attr("href", linkURL);
+				$("#count").text(count);
+				$("#taxon").text(taxon);
+				$("#name").text(name);
+			}
+		})
 
 	});
 

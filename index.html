@@ -87,28 +87,36 @@
                         <h5><div class="icon"></div></h5>
                         <h5 id="currentTempId">Temp, description</h5>
                     </div>
+                    <div class="col-12 section last">
+                            <p class="title">
+                                Species Observed Near Trail
+                            </p>
+                            <div class="col-12 wild-image">
+                                <button id="left">&#10094;
+                                </button>
+                                <a id="wild-link" href="" target="_blank">
+                                    <img id="wild-img" alt="local wildlife image">
+                                </a>
+                                <button id="right">&#10095;
+                                </button>
+                            </div>
+                            <h5 id="wild-info">
+                                <div><span id="count"></span> Sightings</div>
+                                <div>Common Name: <span id="name"></span></div>
+                                <div>Taxonomy: <span id="taxon"></span></div>
+                            </h5>
+                        <div class="images">
+                        </div>
+                    </div>
                     <div class="col-12 section">
                             <p class="title">
-                                Wildlife Sighting Counts by Month
+                                Seasonality of Wildlife Observations
                             </p>
                         <div class="ct-chart ct-golden-section">
                         </div>
-                    </div>
-                    <div class="col-12 section last">
-                            <p class="title">
-                                Wildlife Sighting Image Gallery
-                            </p>
-                            <div class="col-12 wildlife-image">
-                                <img  id="wildlife-img" alt="wildlife image">
-                            </div>
-                            <button class="left"
-                              onclick="plusDivs(-1)">&#10094;
-                            </button>
-                            <button class="right"
-                              onclick="plusDivs(+1)">&#10095;
-                            </button>
-                        <div class="images">
-                        </div>
+                        <p>
+                            (number reported per month)
+                        </p>
                     </div>
                 </div>
             </div>

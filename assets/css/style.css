@@ -154,13 +154,9 @@ li {
 	font-size: 30px;
 }
 
-.trail-image, .wildlife-image {
-	width: 400px;
-}
-
-.trail-image img, .wildlife-image img {
+.trail-image img, .wild-image img {
     object-fit: cover;
-    width: 390px;
+    width: calc(100% - 75px);
     height: 350px;
     border: 7px solid #fff;
     margin-bottom: 15px;
