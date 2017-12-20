@@ -3,6 +3,10 @@
 // data comes from getTrails()
 var trails = {};
 
+// stores data from iNaturals API
+// data pertains to last clicked trail
+var species = [];
+
 // stores searched location data
 // data comes from geocode()
 // geolocate() data used if available
@@ -16,8 +20,6 @@ var placeholder = [
 	{lat: 40.3710, lng: -105.6419},
 ];
 
-var mapLat = 37.2928;
-var mapLng = -113.0081;
 // needed for initAutocomplete
 // some things do not work if not global
 var placeSearch;
@@ -92,8 +94,6 @@ function geocode(address) {
 			};
 
 			getTrails(lat, lng);
-			iNaturalist(lat, lng);
-			getWeather(lat, lng);
 
 		} else {
 			alert('Geocode unsuccessful.');
@@ -113,8 +113,6 @@ function showRandom() {
 	var lng = placeholder[rand].lng;
 
 	getTrails(lat, lng);
-	iNaturalist(lat, lng);
-	getWeather(lat, lng);
 }
 
 // executes when result img clicked
@@ -124,15 +122,10 @@ function showDetails() {
 
 	window.scrollTo(0, 160);
 
-	var mapLat = $(this).data("map-lat");
-	var mapLng = $(this).data("map-lng");
-	map.flyTo({
-		center: [mapLng, mapLat]
-	});
-
-
 	var self = $(this);
 	var index = self.data("index");
+	var lat = self.data("lat");
+	var lng = self.data("lng");
 
 	$.each(trails[index], function populate(key, value) {
 
@@ -147,7 +140,7 @@ function showDetails() {
 
 		$("#trail-imgMedium").attr("src", self.attr("src"))
 
-		var imageSource = $(this).attr("src")
+		var imageSource = $(this).attr("src");
 
 
 		if 	($("#trail-difficulty").text() === "green") {
@@ -176,6 +169,9 @@ function showDetails() {
 		}
 
 	});
+
+	iNaturalist(lat, lng);
+	getWeather(lat, lng);
 }
 
 // Firebase database
@@ -324,8 +320,9 @@ function getTrails(lat, lng) {
 		url: queryURL,
 		method: 'GET'
 	}).done(function(response) {
-		console.log(response);
+
 		var status = response.success;
+
 		if (status === 1) {
 
 			trails = response.trails;
@@ -386,7 +383,6 @@ function renderCards() {
 
 	$("#resultList").empty();
 
-	console.log(trails);
 	for (i = 0; i < trails.length; i++) {
 
 		var card = $("<div>");
@@ -415,8 +411,8 @@ function renderCards() {
 		favoriteButton.data("index", i);
 		favoriteButton.on('click', saveToFavorites);
 
-		image.data("map-lat", trails[i].latitude);
-		image.data("map-lng", trails[i].longitude);
+		image.data("lat", trails[i].latitude);
+		image.data("lng", trails[i].longitude);
 
 
 		if (image.attr("src") === "") {
@@ -535,14 +531,25 @@ function fillInAddress() {
 	}
 }
 
-mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbmJoIiwiYSI6ImNqYmM5N20zbTFneWQzMm1yOTMzdnhwbjkifQ.LsCkehEVMnMWOEui5tZDCw';
+function mapBox() {
+	var mapLat = $(this).data("map-lat");
+	var mapLng = $(this).data("map-lng");
 
-var map = new mapboxgl.Map({
-    container: 'map',
-    center: [mapLng, mapLat],
-    zoom: 14,
-    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
-});
+	mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbmJoIiwiYSI6ImNqYmM5N20zbTFneWQzMm1yOTMzdnhwbjkifQ.LsCkehEVMnMWOEui5tZDCw';
+
+	var map = new mapboxgl.Map({
+	    container: 'map',
+	    center: [mapLng, mapLat],
+	    zoom: 14,
+	    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
+	});
+
+	map.flyTo({
+		center: [mapLng, mapLat]
+	});
+
+}
+
 
 // iNaturalist API
 function iNaturalist(lat, lng) {
@@ -563,6 +570,16 @@ function iNaturalist(lat, lng) {
 		url: speciesQueryURL,
 		method: 'GET'
 	}).done(function(response) {
+		console.log(response);
+
+		var species = response.results;
+
+		// $.each(results[index], function populate(key, value) {
+
+		// 	if ( $(`#trail-${key}`) ) {
+		// 		$(`#trail-${key}`).text(value);
+		// 	}
+		// }
 
 	});
 
