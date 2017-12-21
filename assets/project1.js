@@ -43,7 +43,9 @@ $(document).ready(function() {
 	$("body").on("click", ".directionButtonClass", function(event) {
 		//var spefLat = $(this).attr("data-lat");
 		//var spefLng = $(this).attr("data-lng");
-		var spefName = $(this).attr("data-name");
+		var spefName = $('#trail-name').text();
+
+		
 
 		var url = "https://www.google.com/maps/dir/?api=1";
 		//var origin = "&origin=" + tempLatitude + "," + tempLongitude;
@@ -204,9 +206,9 @@ function showDetails() {
 		
 	});
 
-	//$("#directionButtonCard").html("<button class= directionButtonClass>Get Directions</button")
+	$("#directionButtonCard").html("<button class= directionButtonClass>Get Directions</button")
 
-	//$("#favoriteButtonCard").html("<button class= favorite-button>Favorite</button>")
+	$("#favoriteButtonCard").html("<button class= favorite-button>Favorite</button>")
 
 }
 
@@ -415,7 +417,7 @@ function renderCards() {
 
 		if (image.attr("src") === "") {
 
-			var imagesArray = ["http://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "http://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "http://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "http://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "http://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"];
+			var imagesArray = ["http://www.visitbitterrootvalley.com/wp-content/uploads/2014/10/hiking-pano-bear-creek.jpg", "https://advguides.com/wp-content/uploads/2013/07/linville-falls-2-1024x682-1024x682.jpg", "http://images.summitpost.org/original/617474.jpg", "http://www.pilotcove.com/wp-content/uploads/2016/11/Pilot-Cove-Forest-Lodging-Hiking-Trails-36-1030x711.jpg?x62798", "https://i.wnc.io/s1024/2011-05-15_grandfather-mountain-state-park_profile-trail-slope-big-tree.jpg", "https://i.pinimg.com/originals/25/09/19/250919e4332fc177f7d41126e355b5d9.jpg", "https://www.apartments.com/images/default-source/images-for-renters-blog/nc_hiking.tmb-featuredim.jpg?sfvrsn=12e9b6a1_2", "https://www.carolinabeach.org/Flytrap_trail.jpg", "https://media-cdn.tripadvisor.com/media/photo-s/08/f2/55/23/hiking-trails-in-great.jpg", "http://www.carolinaparent.com/Hemlock%20Bluffs%20Boardwalk-credit%20Bill%20Stice.jpg", "https://media.deseretdigital.com/file/01026f0183?crop=top:0|left:0|width:1260|height:670|gravity:Center&quality=55&interlace=none&resize=width:1260&order=resize,crop&c=14&a=e0f131f0", "http://www.looklocalmagazine.com/wp-content/uploads/2015/04/Fall-hike-trail.jpg", "https://www.nycgovparks.org/pagefiles/78/fall-hiking-inwood-hill-park-trail-lg.jpg", "https://res.cloudinary.com/simpleview/image/fetch/f_auto,q_60/https://res.cloudinary.com/simpleview/image/upload/crm/poconos/MCL-trail-63a5201ede94569_63a52364-9107-a096-7b2506f93e690acb.jpg", "http://www.hikingheels.com/wp-content/uploads/2008/11/img_7160.jpg", "https://www.michiganhousesonline.com/wp-content/uploads/2017/06/Hike-Trails.jpg", "http://www.visitflorida.com/content/dam/visitflorida/en-us/images/slideshow/001/1326050111-vfklappphipps062011-ch08.jpg.1280.500.rendition", "https://cdn.vox-cdn.com/thumbor/0cPaA_F46yJrjsae95bSZ-UICQ0=/0x0:4256x2832/1200x900/filters:focal(1788x1076:2468x1756)/cdn.vox-cdn.com/uploads/chorus_image/image/57008903/shutterstock_674841745.1507172062.jpg", "http://michaellamarr.com/wwpoetry17/Serena/HikingTrail_t640.jpg", "https://cdn.vox-cdn.com/thumbor/3GfqqTQCASAiLqLRTC2PlYcccP8=/0x0:4000x3000/1200x900/filters:focal(1680x1180:2320x1820)/cdn.vox-cdn.com/uploads/chorus_image/image/57015009/DeSoto_National_Forest.0.jpg", "https://i.pinimg.com/736x/d9/d7/b1/d9d7b167d1346df98ced8c41abd79347--hiking-trails-pathways.jpg", "http://www.visitgainesville.com/media/801819/photo_gallery_medium_hawthornebiking.jpg", "https://www.backpacker.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cg_faces:center%2Cq_80%2Cw_620/MTQ0OTE0MDkzMDY0MzMzMDI5/path-through-longleaf-pines.jpg", "https://lh5.googleusercontent.com/-jT8UTwYsWWY/TXZ2NINujqI/AAAAAAAADOs/uDhXo-EkfP4/s400/IMG_1783.JPG", "http://www.sundogoutfitter.com/images/Whitetop-Mountain.jpg", "https://www.railstotrails.org/media/41773/north-bend_rt_mainimage_photo-by-jake-lynch.jpg?crop=0.0600197048945723,0.24265225107922886,0.012372842088744599,0.027910979048561161&cropmode=percentage&width=880&height=460&rnd=131296851720000000", "http://www.hikinginthesmokys.com/smoky_mountains_photos/mount-rogers/mount-rogers.jpg", "https://photos.smugmug.com/Travel/Virginia/Waller-Mill-Park/i-gBFgBB2/0/d070384c/L/Trail%20Still%20Sandy%20-%20Waller%20Mill%20Park%20-%20Williamsburg%2C%20VA-L.jpg", "http://www.waynesboro.va.us/ImageRepository/Path?filePath=%2F00000000-0000-0000-0000-000000000000%5C26%5C29%5C30%2F5-15-12+026_201312301354115069.jpg", "http://www.planetware.com/photos-large/USVA/virginia-beach-first-landing-state-park-trail.jpg", "http://www.dcr.virginia.gov/state-parks/image/data/ca-image-04.jpg", "https://upload.wikimedia.org/wikipedia/commons/6/61/Trail-Forest-Creek_-_West_Virginia_-_ForestWander.jpg", "http://www.tobaccoheritagetrail.org/wp-content/themes/standstillbox/images/Billboard_1.jpg", "https://www.backpacker.com/.image/ar_16:9%2Cc_fill%2Ccs_srgb%2Cg_faces:center%2Cq_80%2Cw_620/MTQ3MjQ3NjQ0NjI2OTIwOTEw/ryan-p-wichelns_2017_04_30-west-virginia-backpacking_20170425_003.jpg", "https://rangerannette.files.wordpress.com/2014/12/31.jpg", "https://modernreston.com/wp-content/uploads/2014/10/Lake-Newport-Reston-Virginia-trail-11.jpg", "https://s3.amazonaws.com/vaorg-listingimages/19276/Rocktown_Trails.jpg", "http://www.intotheyonder.com/uploads/7/4/8/5/74852681/bluebell_3_orig.jpg", "http://cdn.onlyinyourstate.com/wp-content/uploads/2015/08/Virginia-Creeper-Trail-in-Fall--700x466.jpg", "http://www.bikepacking.com/wp-content/uploads/2014/09/Virginia-Mountain-Bike-Trail-34.jpg", "https://upload.wikimedia.org/wikipedia/commons/1/1d/Forest-trail-north-fork-mountain_-_West_Virginia_-_ForestWander.jpg", "https://www.funinfairfaxva.com/wp-content/uploads/2015/05/Fall-colors-on-Difficult-Run-Trail-e1485819432364.jpg", "http://visitabingdonvirginia.com/wp-content/uploads/2015/09/BR15110303V_003-944x424.jpg", "http://cdn.onlyinyourstate.com/wp-content/uploads/2015/08/Old-Rag-trail--700x525.jpg", "https://www.pigeonforge.com/wp-content/uploads/bote-500.jpg", "https://www.nps.gov/common/uploads/grid_builder/akr/crop16_9/FD49899A-1DD8-B71B-0BD128907FBB8C3A.jpg?width=950&quality=90&mode=crop", "https://s3-us-east-2.amazonaws.com/visitdetroit-useast2-ohio/content/uploads/2017/05/17102109/wsi-imageoptim-hiking-trails-1300x865.jpg", "http://media.montalvoarts.org/uploads/images/2010/October/img_1589%20(Modified)1726.jpg", "https://www.nps.gov/slbe/planyourvisit/images/fall_trail.jpg", "http://greerarizona.com/wp-content/themes/prototype-greer/images/hike/01_hiking_trails.jpg", "https://www.mtcharlestonresort.com/images/gallery/hike-ski/mtchaz_hiking_6.jpg", "http://www.uniquelyminnesota.com/images/mn-hiking-0530.jpg", "http://cdn.boulevards.com/files/2014/07/best-hikes-in-santa-cruz1.jpg", "https://glengordonmanor.com/wp-content/uploads/2017/09/Marys-Rock.jpg"];
 
 			var randomImages = imagesArray[Math.floor(imagesArray.length * Math.random())];
 
@@ -445,8 +447,8 @@ function renderCards() {
 		card.append(nameDiv);
 		card.append(lengthDiv);
 		card.append(difficultyDiv);
-		card.append(directionButton);
-		card.append(favoriteButton);
+		//card.append(directionButton);
+		//card.append(favoriteButton);
 
 		$("#resultList").append(card);
 	}
