@@ -87,7 +87,8 @@ li a:hover  {
 }
 
 .nav-search {
-	float: right;
+	width: 100%;
+	margin: auto;
 }
 
 .search-results, .favorites-list {
@@ -307,7 +308,7 @@ li a:hover  {
 }
 #locationField {
     height: 25px;
-    margin-bottom: 2px;
+    margin-bottom: 6px;
 }
 .form-group {
 	margin-top: 30px;
@@ -385,7 +386,7 @@ li a:hover  {
    	margin-top: 0px;
     position: relative;
     width: 480px;
-    text-align: center;
+    margin: auto;
     margin-bottom: 15px;
 }
 .trail-info {
