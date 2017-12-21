@@ -10,6 +10,8 @@
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css">
+
     <link rel="stylesheet" href="assets/css/style.css">
 
     <title>
@@ -21,14 +23,14 @@
     <div class="container">
         <!-- heading & nav/search -->
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 page-title"  >
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 page-title"  >
 
-                    <div id="page-title-1">TRAILS</div><br>
-                    <div id="page-title-2">PROJECT</div>
+                    <div id="page-title-1">TRAILGAZER</div><br>
+
 
 
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 offset-md-1 offset-lg-1 nav-search" >
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6  nav-search" >
 
                 <form>
                     <div id="locationField">
@@ -57,41 +59,84 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 trail-info">
                 <div class="row">
 
-                    <div class="col-12 trail-name">
+                    <div class="col-12 section  trail-name">
                         <span id="trail-name">Appomattox River Park Loop</span>
                         <h4 id="trail-location">Prince George, Virginia</h4>
                     </div>
-                        <div class="col-12 trail-image" id="trail-image">
+                        <div class="col-12 section trail-image" id="trail-image">
                         <img  id="trail-imgMedium" alt="trail image">
-                    </div>
-                    <div class="col-12 trail-summary">
                         <p id="trail-summary">A tough and tight little park for a winding and fun hike.</p>
                     </div>
-                    <div class="col-12 trail-length">
+                    <div class="col-12 section">
+                        <p class="title">Location Information</p>
+                        <div class ="map" id="map">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 trail-location" id="trail-location">
+                <div class="row">
+
+                    <div class="col-6 section trail-specs">
                         <h3 id="trail-length">.trail-length</h3>
+                        <div id="trail-difficulty">.trail-difficulty</div>
                     </div>
-                        <div class="col-12 trail-difficulty">
-                        <h3 id="trail-difficulty">.trail-difficulty</h3>
+                    <div class="col-6 section weather">
+                        <h3 id="weather-title">Current Weather</h3>
+                        <h5><div class="icon"></div></h5>
+                        <h5 id="currentTempId">Temp, description</h5>
+                    </div>
+                    <div class="col-12 section last">
+                            <p class="title">
+                                Species Observed Near Trail
+                            </p>
+                            <div class="col-12 wild-image">
+                                <button id="left">&#10094;
+                                </button>
+                                <a id="wild-link" href="" target="_blank">
+                                    <img id="wild-img" alt="local wildlife image">
+                                </a>
+                                <button id="right">&#10095;
+                                </button>
+                            </div>
+                            <div id="wild-info">
+                            <h5 id="wild-info">
+                                <div id="wild-count"><span id="count"></span> Sightings</div>
+                                <div id="wild-name">Common Name: <span id="name"></span></div>
+                                <div id="wild-taxon">Taxonomy: <span id="taxon"></span></div>
+                            </h5>
+                        </div>
+                        <div class="images">
+                        </div>
+                    </div>
+                    <div class="col-12 section">
+                            <p class="title">
+                                Seasonality of Wildlife Observations
+                            </p>
+                        <div class="ct-chart ct-golden-section">
+                        </div>
+                        <p>
+                            (number reported per month)
+                        </p>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6  trail-location" id="trail-location">
-                <center><span id = "location-title">Location Information</span></center>
-                <div class ="map" id="map">
-                </div>
-<!--                 <center><span id="map-title">Trail Location</span></center> -->
+        <div class="row mt-3">
+            <div class="col-12 favorites-list">
+                <h3 class="title">Favorites List</h3>
+                <ol id="favorite-list"></ol>
             </div>
         </div>
 
-        <div class="col-12">
-            <h3>Favorites List</h3>
-            <ol id="favorite-list"></ol>
-        </div>
+        <div class="row mt-3">
 
-        <div class="col-12 search-results">
-            <h3>Search Results</h3>
-            <div class="row" id="resultList">
+            <div class="col-12 search-results">
+                <h3 class="title">Search Results</h3>
+                <div class="row" id="resultList">
+                </div>
             </div>
         </div>
     </div>
@@ -108,6 +153,9 @@
 
     <!-- Moment.js -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Chartist -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
 
     <!--Javascript with API key -->
     <script src="assets/key.js"></script>
