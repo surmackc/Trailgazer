@@ -25,6 +25,8 @@ var placeholder = [
 var placeSearch;
 var componentForm = { };
 
+var map;
+
 
 // Get user name and location
 $(document).ready(function() {
@@ -48,7 +50,7 @@ $(document).ready(function() {
 		//var spefLng = $(this).attr("data-lng");
 		//var spefName = $('#trail-name').text();
 
-		
+
 //=======
 		var spefLat = $(this).attr("data-lat");
 		var spefLng = $(this).attr("data-lng");
@@ -122,6 +124,7 @@ function showRandom() {
 	var lng = placeholder[rand].lng;
 
 	getTrails(lat, lng);
+	mapBox(lat, lng);
 }
 
 // executes when result img clicked
@@ -129,7 +132,7 @@ function showRandom() {
 function showDetails() {
 	console.log("showDetails");
 
-	window.scrollTo(0, 0);
+	window.scrollTo(0, 160);
 
 	var self = $(this);
 	var index = self.data("index");
@@ -187,7 +190,10 @@ function showDetails() {
 ////=======
 	iNaturalist(lat, lng);
 	getWeather(lat, lng);
-	mapBox(lat, lng);
+
+	map.flyTo({
+		center: [lng, lat]
+	});
 ////>>>>>>> 6a35da23598115942321152b19b5d9a82f0a64d6
 }
 
@@ -240,12 +246,12 @@ function refreshUI(list) {
 // generates our delete link as our favorites are saved
 function genLinks(key, name) {
     var links = '';
-    links += '<a class="button" href="javascript:del(\'' + key + '\',\'' + name + '\')">[Delete]</button>';
+    links += '<a class="button" href="javascript:del(\'' + key + '\')">[Delete]</button>';
     return links;
 };
 
 // delete function which calls the database through buildEndPoint and deletes the items from our list
-function del(key, name) {
+function del(key) {
         var deleteFavorites = buildEndPoint(key);
         deleteFavorites.remove();
     }
@@ -261,16 +267,14 @@ database.ref().on("value", function(snapshot) {
     var list = [];
     for (var key in data) {
         if (data.hasOwnProperty(key)) {
-            name = data[key].name ? data[key].name : '';
+            name = data[key].name;
             url = data[key].site;
-            if (name.trim().length > 0) {
                 list.push({
-                    name: name,
-                    key: key,
-                    url: url
+                name: name,
+                key: key,
+                url: url
 
-                })
-            }
+            })
         }
     }
 // calling our refreshUI on our most up to date list to HTML
@@ -542,11 +546,11 @@ function fillInAddress() {
 	}
 
 	for (var i = 0; i < place.address_components.length; i++) {
-	  var addressType = place.address_components[i].types[0];
-	  if (componentForm[addressType]) {
-	    var val = place.address_components[i][componentForm[addressType]];
-	    document.getElementById(addressType).value = val;
-	  }
+		var addressType = place.address_components[i].types[0];
+		if (componentForm[addressType]) {
+			var val = place.address_components[i][componentForm[addressType]];
+			document.getElementById(addressType).value = val;
+		}
 	}
 }
 
@@ -554,19 +558,13 @@ function mapBox(lat, lng) {
 
 	mapboxgl.accessToken = 'pk.eyJ1IjoidHJpc3RhbmJoIiwiYSI6ImNqYmM5N20zbTFneWQzMm1yOTMzdnhwbjkifQ.LsCkehEVMnMWOEui5tZDCw';
 
-	var map = new mapboxgl.Map({
+	map = new mapboxgl.Map({
 	    container: 'map',
 	    center: [lng, lat],
 	    zoom: 14,
 	    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
 	});
-
-	map.flyTo({
-		center: [lng, lat]
-	});
-
 }
-
 
 // iNaturalist API
 function iNaturalist(lat, lng) {
