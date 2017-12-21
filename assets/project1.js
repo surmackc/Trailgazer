@@ -561,7 +561,7 @@ function mapBox(lat, lng) {
 	map = new mapboxgl.Map({
 	    container: 'map',
 	    center: [lng, lat],
-	    zoom: 14,
+	    zoom: 15,
 	    style: 'mapbox://styles/tristanbh/cjbc99ak070r02smphdl75h5i'
 	});
 }
