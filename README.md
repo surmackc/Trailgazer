@@ -6,4 +6,4 @@
 # Source APIs are REI HikingProject, iNaturlist, Google Maps, MapBox, and OpenWeather
 # User location is determined by a request to the browser, or else by input or default
 
-# URL: https://na-dev.github.io/Project1/
+# URL: https://na-dev.github.io/Trailgazers/
