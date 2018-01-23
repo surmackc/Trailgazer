@@ -46,7 +46,7 @@ $(document).ready(function() {
 		//var spefLng = $(this).attr("data-lng");
 		var spefName = $('#trail-name').text();
 
-		
+
 
 		var url = "https://www.google.com/maps/dir/?api=1";
 		//var origin = "&origin=" + tempLatitude + "," + tempLongitude;
@@ -134,7 +134,7 @@ function showDetails() {
 	});
 
 	var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" + mapLat + "&lon=" + mapLng + "&units=imperial&appid=" + keyWeather;
-	
+
 	$.ajax({
 		url: queryURL,
 		method: 'GET'
@@ -149,7 +149,7 @@ function showDetails() {
 
 	var self = $(this);
 
-	
+
 	$.each(trails[index], function populate(key, value) {
 
 		if ( $(`#trail-${key}`) ) {
@@ -204,7 +204,7 @@ function showDetails() {
 			$("#trail-difficulty").append('<span id="diffSecondary"><h5>Hard</h5></span>');
 		}
 
-		
+
 	});
 
 	$("#directionButtonCard").html("<button class= directionButtonClass>Get Directions</button")
@@ -353,7 +353,7 @@ function getTrails(lat, lng) {
     		milesRadius = "&maxDistance=100";
     }
 
-	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + milesRadius + "&maxResults=50//";
+	queryURL += keyTrails + "&lat=" + lat + "&lon=" + lng + milesRadius + "&maxResults=50/";
 
 	$.ajax({
 		url: queryURL,
@@ -361,7 +361,7 @@ function getTrails(lat, lng) {
 	}).done(function(response) {
 		var status = response.success;
 		if (status === 1) {
-
+			console.log(response);
 			trails = response.trails;
 
 			setLocalStorage("trails", trails);
