@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.42.2/mapbox-gl.css' rel='stylesheet' />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.css">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>
+      Trailgazer
+    </title>
+  </head>
+
+<body>
+    <div class="container">
+        <!-- heading & nav/search -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 page-title"  >
+
+                    <div id="page-title-1">TRAILGAZER</div><br>
+
+
+
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6  nav-search" >
+
+                <form>
+                    <div id="locationField">
+                        <input id="address-input" type="text" placeholder="Address Search">
+                        <select id="source" name="source">
+                            <option>10 Miles</option>
+                            <option>20 Miles</option>
+                            <option>30 Miles</option>
+                            <option>40 Miles</option>
+                            <option>50 Miles</option>
+                            <option>60 Miles</option>
+                            <option>70 Miles</option>
+                            <option>80 Miles</option>
+                            <option>90 Miles</option>
+                            <option>100 Miles</option>
+                        </select>
+                        <button class="btn" id="address-submit" type="text"> Submit </button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- /end heading & nav/search -->
+
+        <div class="row" id="trail-card">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 trail-info">
+                <div class="row">
+
+                    <div class="col-12 section  trail-name">
+                        <span id="trail-name">Appomattox River Park Loop</span>
+                        <h4 id="trail-location">Prince George, Virginia</h4>
+                    </div>
+                    <div class="col-12 section trail-image" id="trail-image">
+                        <a id="trail-url" href="" target="_blank">
+                            <img id="trail-imgMedium" alt="trail image" src="">
+                        </a>
+                        <p id="trail-summary">A tough and tight little park for a winding and fun hike.</p>
+                    </div>
+                </div>
+
+                <div class="col-12 section">
+                    <p class="title">Location Information</p>
+                    <div class ="map" id="map">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 trail-location" id="trail-location">
+                <div class="row">
+
+                    <div class="col-6 section trail-specs">
+                        <h3 id="trail-length">.trail-length</h3>
+                        <div id="trail-difficulty">.trail-difficulty</div>
+                    </div>
+                    <div class="col-6 section weather">
+                        <h3 id="weather-title">Current Weather</h3>
+                        <h5><div class="icon"></div></h5>
+                        <h5 id="currentTempId">Temp, description</h5>
+                    </div>
+                    <div class="col-12 section last">
+                            <p class="title">
+                                Species Observed Near Trail
+                            </p>
+                            <div class="col-12 wild-image">
+                                <button id="left">&#10094;
+                                </button>
+                                <a id="wild-link" href="" target="_blank">
+                                    <img id="wild-img" alt="local wildlife image">
+                                </a>
+                                <button id="right">&#10095;
+                                </button>
+                            </div>
+                            <div id="wild-info">
+                            <h5 id="wild-info">
+                                <div id="wild-count"><span id="count"></span> Sightings</div>
+                                <div id="wild-name">Common Name: <span id="name"></span></div>
+                                <div id="wild-taxon">Taxonomy: <span id="taxon"></span></div>
+                            </h5>
+                        </div>
+                        <div class="images">
+                        </div>
+                    </div>
+                    <div class="col-12 section">
+                            <p class="title">
+                                Seasonality of Wildlife Observations
+                            </p>
+                        <div class="ct-chart ct-golden-section">
+                        </div>
+                        <p>
+                            (number reported per month)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12 favorites-list">
+                <h3 class="title">Favorites List</h3>
+                <ol id="favorite-list"></ol>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+
+            <div class="col-12 search-results">
+                <h3 class="title">Search Results</h3>
+                <div class="row" id="resultList">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.0/firebase.js">
+    </script>
+
+    <!-- jQuery CDN -->
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+
+    <!-- Moment.js -->
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <!-- Chartist -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js"></script>
+
+    <!--Javascript with API key -->
+    <script src="assets/key.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/project1.js"></script>
+
+    <!-- Google Places Autocomplete and Places Library -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRt0EcXbppvF46BuzFPFx447lYL6psmuU&libraries=places&callback=initAutocomplete" async defer>
+    </script>
+
+  </body>
+
+</html>

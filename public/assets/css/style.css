@@ -1,0 +1,397 @@
+body{
+	background: #F0F9EF;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
+}
+
+h1 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	font-size: 20px;
+}
+h2 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+}
+
+h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+}
+h4 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-style: italic;
+	font-size: 16px;
+}
+h5 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+}
+h6 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 10px;
+}
+
+}
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+}
+li  {
+	font-family: 'Montserrat', sans-serif;
+	color: #00997C;
+	font-weight: 300;
+	font-size: 16px;
+}
+
+li a {
+	font-family: 'Montserrat', sans-serif;
+	color: #007291;
+	font-weight: 500;
+	font-size: 16px;
+}
+li a:hover  {
+	font-family: 'Montserrat', sans-serif;
+	color: #004291;
+	font-style: underline;
+	font-weight: 500;
+	font-size: 16px;
+}
+.page-title {
+	text-align: center;
+
+	background-image: url(../images/page-title-bg.svg);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+	background-size: 85%;
+	width: 100%;
+	height:150px;
+}
+
+#page-title-1 {
+	font-size: 50px;
+	font-family:'Montserrat', sans-serif;
+	text-shadow: 1px -4px 35px #F0F9EF;
+	font-weight: 900;
+	line-height: 35px;
+	color: #0D4A3C;
+	margin-top: 95px;
+	margin-bottom: 0px;
+	width:100%;
+}
+
+.nav-search {
+	width: 100%;
+	margin: auto;
+}
+
+.search-results, .favorites-list {
+/*	background: #E7EFE6;*/
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	border-right: 10px solid #F0F9EF;
+}
+
+#resultList, {
+	background: #E7EFE6;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.imgDiv {
+	position: relative;
+	padding: 5px;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+
+}
+
+.imgDiv img {
+	width: 100%;
+    height: 250px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+
+.hide {
+	display: none;
+}
+
+ /*Trail information section*/
+
+#trail-card, #favorite-list {
+	background: #E7EFE6;
+	background: linear-gradient(-180deg,#E7EFE6 5%, #DFEDEC 220%);
+	text-align: center;
+	color: #0A2734;
+	font-weight: 300;
+/*	border-top: .5px solid #9BD3BD;*/
+}
+
+.trail-info {
+	border-right: 5px solid #F0F9EF;
+	border-right: 5px solid #F0F9EF;
+}
+
+.trail-location {
+	border-right: 5px solid #F0F9EF;
+	border-right: 5px solid #F0F9EF;
+}
+
+.section {
+	border-bottom: .5px solid #fff;
+	padding: 15px 25px 0 25px;
+}
+
+.section:last-of-type {
+	border-bottom: none;
+}
+
+.title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 25px;
+	color: #0A2734;
+}
+
+#trail-name {
+	font-size: 30px;
+}
+
+.trail-image img, .wild-image img {
+    object-fit: cover;
+    width: calc(100% - 75px);
+    height: 350px;
+    border: 7px solid #fff;
+    margin-bottom: 15px;
+}
+#wild-info {
+	margin-bottom: 15px;
+}
+#wild-count, #wild-name, #wild-taxon {
+	width: 100%;
+	margin-top: 5px;
+	
+}
+
+#name, #taxon {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 500;
+	font-size: 14px;
+}
+}
+
+#trail-length, #weather-title {
+	margin-top: 10px;
+	color: #0A2734;
+	font-weight: 300;
+}
+/*009C66*/
+
+#difficultyImg {
+	width: 40px;
+	height:40px;
+	margin: 10px 0;
+}
+#difficultyImgLg, .weather .icon {
+	width: 80px;
+	height:80px;
+	clear:both;
+}
+.trail-specs, .weather {
+
+}
+.weather .icon {
+  background-image: url('https://quickwebresources.com/wp-content/uploads/2012/06/weather-icons.jpg');
+  border-radius: 20%;
+  border: 1px solid;
+  margin: 0 auto;
+}
+
+#favorite-list {
+	text-align: left;
+	line-height: 1.5rem;
+}
+#favorite-list .button {
+	background: none;
+	color: inherit;
+	padding: 0 6px;
+}
+
+/*Map location section*/
+.map {
+	border: 5px solid #fff;
+
+}
+#map {
+	height: 350px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: 7px solid #fff;
+	text-align: left;
+}
+
+#map-title {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	font-size: 20px;
+	color: #000;
+	padding-bottom: 10px;
+}
+
+/*-- Histogram -----------*/
+
+.ct-chart {
+	width: 100%
+	height: 50%;
+}
+
+.ct-bar {
+  stroke: #0080FF!important;
+}
+
+.ct-labels {
+  color: #0080FF;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/*------------------------*/
+
+/* Address Search Input & Autocomplete */
+
+#locationField, #controls {
+   	margin-top: 110px;
+    position: relative;
+    width: 480px;
+    height: 100px;
+
+}
+#address-input {
+    top: 0px;
+    left: 0px;
+    width: 250px;
+}
+.label {
+    text-align: right;
+    font-weight: bold;
+    width: 100px;
+    color: #303030;
+}
+#address {
+    border: 1px solid #000090;
+    background-color: #f0f0ff;
+    width: 480px;
+    padding-right: 2px;
+}
+#address td {
+    font-size: 10pt;
+}
+.field {
+    width: 99%;
+}
+.slimField {
+    width: 80px;
+}
+.wideField {
+    width: 200px;
+}
+#locationField {
+    height: 25px;
+    margin-bottom: 6px;
+}
+.form-group {
+	margin-top: 30px;
+}
+
+.btn {
+	background:#00997C;
+	color: #fff;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	padding: 2px;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+    background-color: #00997C;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    margin-top: 5px;
+
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+
+.directionButtonClass {
+	background-color: #00997C;
+	color: #fff;
+	cursor: pointer;
+}
+.favorite-button {
+	cursor: pointer;
+}
+
+@media screen and (max-width: 990px) {
+	#locationField, #controls {
+   	margin-top: 0px;
+    position: relative;
+    width: 480px;
+    margin: auto;
+    margin-bottom: 15px;
+}
+.trail-info {
+
+	margin-top: 0px;
+
+}
+}

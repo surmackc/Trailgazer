@@ -1,0 +1,23 @@
+{
+  "name": "trailgazer",
+  "version": "1.0.0",
+  "description": "Trailgazers is a team-developed web app for discovering new hiking trails",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NA-Dev/Project1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NA-Dev/Project1/issues"
+  },
+  "homepage": "https://github.com/NA-Dev/Project1#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
