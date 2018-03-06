@@ -1,3 +1,8 @@
+var keyMaps = process.env.keyMaps;
+
+var keyTrails = process.env.keyTrails;
+
+var keyWeather = process.env.keyWeather;
 
 // stores data from hiking project
 // data comes from getTrails()
