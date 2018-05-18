@@ -6,5 +6,7 @@ Technologies used are HTML, CSS, Javascript, JQuery, and Firebase.
 Source APIs are REI HikingProject, iNaturlist, Google Maps, MapBox, and OpenWeather
 User location is determined by a request to the browser, or else by input or default
 
+https://surmackc.github.io/Trailgazer/
+
 ![Image of Trailgazer](https://github.com/surmackc/Current-Portfolio/blob/master/img/portfolio/fullsize/trailgazer.png)
 
